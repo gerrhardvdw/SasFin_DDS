@@ -1,0 +1,3129 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/28/2019 5:41:41 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-BV4ITRF"
+  DTS:CreatorName="EOHCORP\Gerhard.VDWesthuizen"
+  DTS:DTSID="{79E039E6-8179-4AB0-85C1-00D67A2914B6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LocaleID="7177"
+  DTS:ObjectName="Load_DimAccount"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{D48B0636-1BCE-486A-8ADB-8CB2C0876977}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Accounts to Staging"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{12ADDAFC-4181-4078-99F3-00153CC5C4A1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Accounts to Staging"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Accounts to Staging\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg_Accounts]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Accounts to Staging\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{0D22BD72-973C-408F-BC33-0034803F98C0}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ACTINDX]"
+                      cachedDataType="i4"
+                      cachedName="ACTINDX"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACTINDX]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTINDX]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FullAccountNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="129"
+                      cachedName="FullAccountNumber"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullAccountNumber]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullAccountNumber]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AccountNr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="AccountNr"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountNr]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountNr]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DivisionCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="DivisionCode"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DivisionCode]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[DivisionCode]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ActivityCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="ActivityCode"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActivityCode]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActivityCode]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AreaCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="AreaCode"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AreaCode]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AreaCode]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StaffID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="StaffID"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StaffID]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[StaffID]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CompanyCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="CompanyCode"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CompanyCode]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[CompanyCode]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AltCode7]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="AltCode7"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AltCode7]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode7]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AltCode8]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="AltCode8"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AltCode8]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode8]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AltCode9]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="AltCode9"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AltCode9]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode9]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AltCode10]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="AltCode10"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AltCode10]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode10]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ACTALIAS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="21"
+                      cachedName="ACTALIAS"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACTALIAS]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTALIAS]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MNACSGMT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="67"
+                      cachedName="MNACSGMT"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MNACSGMT]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[MNACSGMT]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ACCTTYPE]"
+                      cachedDataType="i2"
+                      cachedName="ACCTTYPE"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACCTTYPE]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCTTYPE]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AccountDescription]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="51"
+                      cachedName="AccountDescription"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountDescription]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountDescription]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PSTNGTYP]"
+                      cachedDataType="i2"
+                      cachedName="PSTNGTYP"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PSTNGTYP]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[PSTNGTYP]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ACCATNUM]"
+                      cachedDataType="i2"
+                      cachedName="ACCATNUM"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACCATNUM]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCATNUM]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AccountCategory]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="51"
+                      cachedName="AccountCategory"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountCategory]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountCategory]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ACTIVE]"
+                      cachedDataType="ui1"
+                      cachedName="ACTIVE"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACTIVE]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTIVE]" />
+                    <inputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TPCLBLNC]"
+                      cachedDataType="i2"
+                      cachedName="TPCLBLNC"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TPCLBLNC]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[TPCLBLNC]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACTINDX]"
+                      dataType="i4"
+                      name="ACTINDX" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullAccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="129"
+                      name="FullAccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountNr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AccountNr" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DivisionCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="DivisionCode" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActivityCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="ActivityCode" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AreaCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AreaCode" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StaffID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="StaffID" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CompanyCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="CompanyCode" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AltCode7]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AltCode7" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AltCode8]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AltCode8" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AltCode9]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AltCode9" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AltCode10]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AltCode10" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACTALIAS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="21"
+                      name="ACTALIAS" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MNACSGMT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="67"
+                      name="MNACSGMT" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACCTTYPE]"
+                      dataType="i2"
+                      name="ACCTTYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="51"
+                      name="AccountDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PSTNGTYP]"
+                      dataType="i2"
+                      name="PSTNGTYP" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACCATNUM]"
+                      dataType="i2"
+                      name="ACCATNUM" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountCategory]"
+                      codePage="1252"
+                      dataType="str"
+                      length="51"
+                      name="AccountCategory" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACTIVE]"
+                      dataType="ui1"
+                      name="ACTIVE" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TPCLBLNC]"
+                      dataType="i2"
+                      name="TPCLBLNC" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Accounts to Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Accounts to Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Accounts to Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Accounts to Staging\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT a.[ACTINDX]
+	  ,b.[ACTNUMST] as [FullAccountNumber]
+      ,a.[ACTNUMBR_1] as [AccountNr]
+      ,a.[ACTNUMBR_2] as [DivisionCode]
+      ,a.[ACTNUMBR_3] as [ActivityCode]
+      ,a.[ACTNUMBR_4] as [AreaCode]
+      ,a.[ACTNUMBR_5] as [StaffID]
+      ,a.[ACTNUMBR_6] as [CompanyCode]
+      ,a.[ACTNUMBR_7] as [AltCode7]
+      ,a.[ACTNUMBR_8] as [AltCode8]
+      ,a.[ACTNUMBR_9] as [AltCode9]
+      ,a.[ACTNUMBR_10] as [AltCode10]
+      ,[ACTALIAS]
+      ,[MNACSGMT]
+      ,[ACCTTYPE]
+      ,[ACTDESCR] as [AccountDescription]
+      ,[PSTNGTYP]
+      ,a.[ACCATNUM]
+	  ,c.[ACCATDSC] as AccountCategory
+      ,[ACTIVE]
+      ,[TPCLBLNC]
+     
+  FROM [dbo].[GL00100] a
+  Left Join  [dbo].[GL00105] b on a.[ACTINDX] = b.[ACTINDX]
+  Left Join [dbo].[GL00102] c on a.[ACCATNUM] = c.[ACCATNUM]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Accounts to Staging\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{7B77FCE4-D046-4697-B2C8-1F05DF8FFBBB}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[GL_Source]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTINDX]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTINDX]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTINDX]"
+                      name="ACTINDX"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullAccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullAccountNumber]"
+                      length="129"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullAccountNumber]"
+                      name="FullAccountNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountNr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountNr]"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountNr]"
+                      name="AccountNr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[DivisionCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DivisionCode]"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[DivisionCode]"
+                      name="DivisionCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActivityCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ActivityCode]"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActivityCode]"
+                      name="ActivityCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AreaCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AreaCode]"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AreaCode]"
+                      name="AreaCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[StaffID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StaffID]"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[StaffID]"
+                      name="StaffID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[CompanyCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CompanyCode]"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[CompanyCode]"
+                      name="CompanyCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode7]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode7]"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode7]"
+                      name="AltCode7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode8]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode8]"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode8]"
+                      name="AltCode8"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode9]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode9]"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode9]"
+                      name="AltCode9"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode10]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode10]"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode10]"
+                      name="AltCode10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTALIAS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTALIAS]"
+                      length="21"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTALIAS]"
+                      name="ACTALIAS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[MNACSGMT]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MNACSGMT]"
+                      length="67"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[MNACSGMT]"
+                      name="MNACSGMT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCTTYPE]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACCTTYPE]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCTTYPE]"
+                      name="ACCTTYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountDescription]"
+                      length="51"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountDescription]"
+                      name="AccountDescription"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[PSTNGTYP]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PSTNGTYP]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[PSTNGTYP]"
+                      name="PSTNGTYP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCATNUM]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACCATNUM]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCATNUM]"
+                      name="ACCATNUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountCategory]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountCategory]"
+                      length="51"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountCategory]"
+                      name="AccountCategory"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTIVE]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTIVE]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTIVE]"
+                      name="ACTIVE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[TPCLBLNC]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TPCLBLNC]"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[TPCLBLNC]"
+                      name="TPCLBLNC"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTINDX]"
+                      dataType="i4"
+                      name="ACTINDX" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullAccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="129"
+                      name="FullAccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountNr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AccountNr" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DivisionCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="DivisionCode" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ActivityCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="ActivityCode" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AreaCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AreaCode" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StaffID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="StaffID" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CompanyCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="CompanyCode" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode7]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AltCode7" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode8]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AltCode8" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode9]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AltCode9" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode10]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AltCode10" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTALIAS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="21"
+                      name="ACTALIAS" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MNACSGMT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="67"
+                      name="MNACSGMT" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACCTTYPE]"
+                      dataType="i2"
+                      name="ACCTTYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="51"
+                      name="AccountDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PSTNGTYP]"
+                      dataType="i2"
+                      name="PSTNGTYP" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACCATNUM]"
+                      dataType="i2"
+                      name="ACCATNUM" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountCategory]"
+                      codePage="1252"
+                      dataType="str"
+                      length="51"
+                      name="AccountCategory" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTIVE]"
+                      dataType="ui1"
+                      name="ACTIVE" />
+                    <externalMetadataColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TPCLBLNC]"
+                      dataType="i2"
+                      name="TPCLBLNC" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTINDX]"
+                      dataType="i4"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTINDX]"
+                      name="ACTINDX" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullAccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="129"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullAccountNumber]"
+                      name="FullAccountNumber" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountNr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountNr]"
+                      name="AccountNr" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DivisionCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DivisionCode]"
+                      name="DivisionCode" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ActivityCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ActivityCode]"
+                      name="ActivityCode" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AreaCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AreaCode]"
+                      name="AreaCode" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StaffID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StaffID]"
+                      name="StaffID" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CompanyCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CompanyCode]"
+                      name="CompanyCode" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode7]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode7]"
+                      name="AltCode7" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode8]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode8]"
+                      name="AltCode8" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode9]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode9]"
+                      name="AltCode9" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode10]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode10]"
+                      name="AltCode10" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTALIAS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="21"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTALIAS]"
+                      name="ACTALIAS" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MNACSGMT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="67"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MNACSGMT]"
+                      name="MNACSGMT" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACCTTYPE]"
+                      dataType="i2"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACCTTYPE]"
+                      name="ACCTTYPE" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="51"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountDescription]"
+                      name="AccountDescription" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PSTNGTYP]"
+                      dataType="i2"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PSTNGTYP]"
+                      name="PSTNGTYP" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACCATNUM]"
+                      dataType="i2"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACCATNUM]"
+                      name="ACCATNUM" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountCategory]"
+                      codePage="1252"
+                      dataType="str"
+                      length="51"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountCategory]"
+                      name="AccountCategory" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTIVE]"
+                      dataType="ui1"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTIVE]"
+                      name="ACTIVE" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TPCLBLNC]"
+                      dataType="i2"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TPCLBLNC]"
+                      name="TPCLBLNC" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Accounts to Staging.Paths[OLE DB Source Output]"
+              endId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DimAccounts"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D306223C-B936-444C-A341-B00CB7EE41AF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DimAccounts"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DimAccounts\Activity Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Activity Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [SGMTNUMB]
+      ,[SGMNTID]
+      ,[DSCRIPTN]
+      ,[SEGCOUNT]
+     
+  FROM [dbo].[GL40200]
+  Where SGMTNUMB = 3
+  and [DSCRIPTN] &lt;&gt; ''</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT [SGMTNUMB]
+      ,[SGMNTID]
+      ,[DSCRIPTN]
+      ,[SEGCOUNT]
+     
+  FROM [dbo].[GL40200]
+  Where SGMTNUMB = 3
+  and [DSCRIPTN] &lt;&gt; '') [refTable]
+where [refTable].[SGMNTID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SGMTNUMB" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SGMNTID" dataType="DT_STR" length="67" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DSCRIPTN" dataType="DT_STR" length="31" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SEGCOUNT" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActivityCode]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimAccounts\Activity Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{7B77FCE4-D046-4697-B2C8-1F05DF8FFBBB}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[GL_Source]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimAccounts\Activity Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimAccounts\Activity Lookup.Inputs[Lookup Input].Columns[ActivityCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="ActivityCode"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActivityCode]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SGMNTID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimAccounts\Activity Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DimAccounts\Activity Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAccounts\Activity Lookup.Outputs[Lookup Match Output].Columns[ActivityDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="31"
+                      lineageId="Package\DimAccounts\Activity Lookup.Outputs[Lookup Match Output].Columns[ActivityDescription]"
+                      name="ActivityDescription"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DSCRIPTN</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimAccounts\Activity Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DimAccounts\Activity Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimAccounts\Activity Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DimAccounts\Activity Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAccounts\Activity Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimAccounts\Activity Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimAccounts\Activity Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimAccounts\Activity Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimAccounts\Area Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Area Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [SGMTNUMB]
+      ,[SGMNTID]
+      ,[DSCRIPTN]
+      ,[SEGCOUNT]
+    
+  FROM [dbo].[GL40200]
+  Where SGMTNUMB = 4
+  and [DSCRIPTN] &lt;&gt; ''</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT [SGMTNUMB]
+      ,[SGMNTID]
+      ,[DSCRIPTN]
+      ,[SEGCOUNT]
+    
+  FROM [dbo].[GL40200]
+  Where SGMTNUMB = 4
+  and [DSCRIPTN] &lt;&gt; '') [refTable]
+where [refTable].[SGMNTID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SGMTNUMB" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SGMNTID" dataType="DT_STR" length="67" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DSCRIPTN" dataType="DT_STR" length="31" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SEGCOUNT" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AreaCode]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimAccounts\Area Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{7B77FCE4-D046-4697-B2C8-1F05DF8FFBBB}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[GL_Source]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimAccounts\Area Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimAccounts\Area Lookup.Inputs[Lookup Input].Columns[AreaCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="AreaCode"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AreaCode]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SGMNTID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimAccounts\Area Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DimAccounts\Area Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAccounts\Area Lookup.Outputs[Lookup Match Output].Columns[AreaDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="31"
+                      lineageId="Package\DimAccounts\Area Lookup.Outputs[Lookup Match Output].Columns[AreaDescription]"
+                      name="AreaDescription"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DSCRIPTN</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimAccounts\Area Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DimAccounts\Area Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimAccounts\Area Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DimAccounts\Area Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAccounts\Area Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimAccounts\Area Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimAccounts\Area Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimAccounts\Area Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimAccounts\Company Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Company Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [SGMTNUMB]
+      ,[SGMNTID]
+      ,[DSCRIPTN]
+      ,[SEGCOUNT]
+     
+  FROM [dbo].[GL40200]
+  Where SGMTNUMB = 6
+  and [DSCRIPTN] &lt;&gt; ''</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT [SGMTNUMB]
+      ,[SGMNTID]
+      ,[DSCRIPTN]
+      ,[SEGCOUNT]
+     
+  FROM [dbo].[GL40200]
+  Where SGMTNUMB = 6
+  and [DSCRIPTN] &lt;&gt; '') [refTable]
+where [refTable].[SGMNTID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SGMTNUMB" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SGMNTID" dataType="DT_STR" length="67" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DSCRIPTN" dataType="DT_STR" length="31" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SEGCOUNT" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[CompanyCode]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimAccounts\Company Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{7B77FCE4-D046-4697-B2C8-1F05DF8FFBBB}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[GL_Source]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimAccounts\Company Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimAccounts\Company Lookup.Inputs[Lookup Input].Columns[CompanyCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="CompanyCode"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[CompanyCode]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SGMNTID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimAccounts\Company Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DimAccounts\Company Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAccounts\Company Lookup.Outputs[Lookup Match Output].Columns[CompanyDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="31"
+                      lineageId="Package\DimAccounts\Company Lookup.Outputs[Lookup Match Output].Columns[CompanyDescription]"
+                      name="CompanyDescription"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DSCRIPTN</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimAccounts\Company Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DimAccounts\Company Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimAccounts\Company Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DimAccounts\Company Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAccounts\Company Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimAccounts\Company Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimAccounts\Company Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimAccounts\Company Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimAccounts\Division Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Division Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
+[SGMTNUMB]
+      ,[SGMNTID]
+      ,[DSCRIPTN]
+      ,[SEGCOUNT]
+      ,[NOTEINDX]
+      ,[DEX_ROW_TS]
+      ,[DEX_ROW_ID]
+  FROM [dbo].[GL40200]
+  Where SGMTNUMB = 2
+  and [DSCRIPTN] &lt;&gt; ''</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT 
+[SGMTNUMB]
+      ,[SGMNTID]
+      ,[DSCRIPTN]
+      ,[SEGCOUNT]
+      ,[NOTEINDX]
+      ,[DEX_ROW_TS]
+      ,[DEX_ROW_ID]
+  FROM [dbo].[GL40200]
+  Where SGMTNUMB = 2
+  and [DSCRIPTN] &lt;&gt; '') [refTable]
+where [refTable].[SGMNTID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SGMTNUMB" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SGMNTID" dataType="DT_STR" length="67" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DSCRIPTN" dataType="DT_STR" length="31" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SEGCOUNT" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NOTEINDX" dataType="DT_NUMERIC" length="0" precision="19" scale="5" codePage="0"/&gt;&lt;referenceColumn name="DEX_ROW_TS" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DEX_ROW_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[DivisionCode]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimAccounts\Division Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{7B77FCE4-D046-4697-B2C8-1F05DF8FFBBB}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[GL_Source]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimAccounts\Division Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimAccounts\Division Lookup.Inputs[Lookup Input].Columns[DivisionCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="DivisionCode"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[DivisionCode]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SGMNTID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimAccounts\Division Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DimAccounts\Division Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAccounts\Division Lookup.Outputs[Lookup Match Output].Columns[DivisionDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="31"
+                      lineageId="Package\DimAccounts\Division Lookup.Outputs[Lookup Match Output].Columns[DivisionDescription]"
+                      name="DivisionDescription"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DSCRIPTN</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimAccounts\Division Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DimAccounts\Division Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimAccounts\Division Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DimAccounts\Division Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAccounts\Division Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimAccounts\Division Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimAccounts\Division Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimAccounts\Division Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimAccounts\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stg_Accounts]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [ACTINDX]
+      ,[FullAccountNumber]
+	  ,REPLACE(REPLACE([FullAccountNumber],' ',''),'-','') as TmpAccountNr
+      ,[AccountNr]
+      ,[DivisionCode]
+      ,[ActivityCode]
+      ,[AreaCode]
+      ,[StaffID]
+      ,[CompanyCode]
+      ,[AltCode7]
+      ,[AltCode8]
+      ,[AltCode9]
+      ,[AltCode10]
+      ,[ACTALIAS]
+      ,[MNACSGMT]
+      ,[ACCTTYPE]
+      ,[AccountDescription]
+      ,[PSTNGTYP]
+      ,[ACCATNUM]
+      ,[AccountCategory]
+      ,[ACTIVE]
+      ,[TPCLBLNC]
+  FROM [dbo].[stg_Accounts]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimAccounts\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{0D22BD72-973C-408F-BC33-0034803F98C0}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTINDX]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTINDX]"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTINDX]"
+                      name="ACTINDX"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullAccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullAccountNumber]"
+                      length="129"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullAccountNumber]"
+                      name="FullAccountNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountNr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountNr]"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountNr]"
+                      name="AccountNr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[DivisionCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DivisionCode]"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[DivisionCode]"
+                      name="DivisionCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActivityCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ActivityCode]"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ActivityCode]"
+                      name="ActivityCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AreaCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AreaCode]"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AreaCode]"
+                      name="AreaCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[StaffID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StaffID]"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[StaffID]"
+                      name="StaffID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[CompanyCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CompanyCode]"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[CompanyCode]"
+                      name="CompanyCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode7]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode7]"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode7]"
+                      name="AltCode7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode8]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode8]"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode8]"
+                      name="AltCode8"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode9]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode9]"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode9]"
+                      name="AltCode9"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode10]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode10]"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AltCode10]"
+                      name="AltCode10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTALIAS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTALIAS]"
+                      length="21"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTALIAS]"
+                      name="ACTALIAS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[MNACSGMT]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MNACSGMT]"
+                      length="67"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[MNACSGMT]"
+                      name="MNACSGMT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCTTYPE]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACCTTYPE]"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCTTYPE]"
+                      name="ACCTTYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountDescription]"
+                      length="51"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountDescription]"
+                      name="AccountDescription"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[PSTNGTYP]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PSTNGTYP]"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[PSTNGTYP]"
+                      name="PSTNGTYP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCATNUM]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACCATNUM]"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCATNUM]"
+                      name="ACCATNUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountCategory]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountCategory]"
+                      length="51"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountCategory]"
+                      name="AccountCategory"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTIVE]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTIVE]"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTIVE]"
+                      name="ACTIVE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[TPCLBLNC]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TPCLBLNC]"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[TPCLBLNC]"
+                      name="TPCLBLNC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[TmpAccountNr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TmpAccountNr]"
+                      length="8000"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[TmpAccountNr]"
+                      name="TmpAccountNr"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTINDX]"
+                      dataType="i4"
+                      name="ACTINDX" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullAccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="129"
+                      name="FullAccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountNr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AccountNr" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DivisionCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="DivisionCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ActivityCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="ActivityCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AreaCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AreaCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StaffID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="StaffID" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CompanyCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="CompanyCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode7]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AltCode7" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode8]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AltCode8" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode9]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AltCode9" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AltCode10]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AltCode10" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTALIAS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="21"
+                      name="ACTALIAS" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MNACSGMT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="67"
+                      name="MNACSGMT" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACCTTYPE]"
+                      dataType="i2"
+                      name="ACCTTYPE" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="51"
+                      name="AccountDescription" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PSTNGTYP]"
+                      dataType="i2"
+                      name="PSTNGTYP" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACCATNUM]"
+                      dataType="i2"
+                      name="ACCATNUM" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountCategory]"
+                      codePage="1252"
+                      dataType="str"
+                      length="51"
+                      name="AccountCategory" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTIVE]"
+                      dataType="ui1"
+                      name="ACTIVE" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TPCLBLNC]"
+                      dataType="i2"
+                      name="TPCLBLNC" />
+                    <externalMetadataColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TmpAccountNr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8000"
+                      name="TmpAccountNr" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTINDX]"
+                      dataType="i4"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTINDX]"
+                      name="ACTINDX" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullAccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="129"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullAccountNumber]"
+                      name="FullAccountNumber" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TmpAccountNr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8000"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TmpAccountNr]"
+                      name="TmpAccountNr" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountNr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountNr]"
+                      name="AccountNr" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DivisionCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DivisionCode]"
+                      name="DivisionCode" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ActivityCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ActivityCode]"
+                      name="ActivityCode" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AreaCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AreaCode]"
+                      name="AreaCode" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StaffID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StaffID]"
+                      name="StaffID" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CompanyCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CompanyCode]"
+                      name="CompanyCode" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode7]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode7]"
+                      name="AltCode7" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode8]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode8]"
+                      name="AltCode8" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode9]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode9]"
+                      name="AltCode9" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode10]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AltCode10]"
+                      name="AltCode10" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTALIAS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="21"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTALIAS]"
+                      name="ACTALIAS" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MNACSGMT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="67"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MNACSGMT]"
+                      name="MNACSGMT" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACCTTYPE]"
+                      dataType="i2"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACCTTYPE]"
+                      name="ACCTTYPE" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      length="51"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountDescription]"
+                      name="AccountDescription" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PSTNGTYP]"
+                      dataType="i2"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PSTNGTYP]"
+                      name="PSTNGTYP" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACCATNUM]"
+                      dataType="i2"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACCATNUM]"
+                      name="ACCATNUM" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountCategory]"
+                      codePage="1252"
+                      dataType="str"
+                      length="51"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountCategory]"
+                      name="AccountCategory" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTIVE]"
+                      dataType="ui1"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTIVE]"
+                      name="ACTIVE" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TPCLBLNC]"
+                      dataType="i2"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TPCLBLNC]"
+                      name="TPCLBLNC" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimAccounts\PostingType Description"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="PostingType Description"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DimAccounts\PostingType Description.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimAccounts\PostingType Description.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DimAccounts\PostingType Description.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimAccounts\PostingType Description.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DimAccounts\PostingType Description.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAccounts\PostingType Description.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimAccounts\PostingType Description.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimAccounts\PostingType Description.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimAccounts\PostingType Description.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimAccounts\Staff Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Staff Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [SGMTNUMB]
+      ,[SGMNTID]
+      ,[DSCRIPTN]
+      ,[SEGCOUNT]
+      
+  FROM [dbo].[GL40200]
+  Where SGMTNUMB = 5
+  and [DSCRIPTN] &lt;&gt; ''</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT [SGMTNUMB]
+      ,[SGMNTID]
+      ,[DSCRIPTN]
+      ,[SEGCOUNT]
+      
+  FROM [dbo].[GL40200]
+  Where SGMTNUMB = 5
+  and [DSCRIPTN] &lt;&gt; '') [refTable]
+where [refTable].[SGMNTID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SGMTNUMB" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SGMNTID" dataType="DT_STR" length="67" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DSCRIPTN" dataType="DT_STR" length="31" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SEGCOUNT" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[StaffID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimAccounts\Staff Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{7B77FCE4-D046-4697-B2C8-1F05DF8FFBBB}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[GL_Source]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimAccounts\Staff Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimAccounts\Staff Lookup.Inputs[Lookup Input].Columns[StaffID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="StaffID"
+                      lineageId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output].Columns[StaffID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SGMNTID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimAccounts\Staff Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DimAccounts\Staff Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAccounts\Staff Lookup.Outputs[Lookup Match Output].Columns[StaffDescription]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="31"
+                      lineageId="Package\DimAccounts\Staff Lookup.Outputs[Lookup Match Output].Columns[StaffDescription]"
+                      name="StaffDescription"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DSCRIPTN</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimAccounts\Staff Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DimAccounts\Staff Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimAccounts\Staff Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DimAccounts\Staff Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAccounts\Staff Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimAccounts\Staff Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimAccounts\Staff Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimAccounts\Staff Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DimAccounts.Paths[Lookup Match Output]"
+              endId="Package\DimAccounts\Activity Lookup.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DimAccounts\Division Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DimAccounts.Paths[Lookup Match Output1]"
+              endId="Package\DimAccounts\Area Lookup.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DimAccounts\Activity Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DimAccounts.Paths[Lookup Match Output2]"
+              endId="Package\DimAccounts\Staff Lookup.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DimAccounts\Area Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DimAccounts.Paths[Lookup Match Output3]"
+              endId="Package\DimAccounts\Company Lookup.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DimAccounts\Staff Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DimAccounts.Paths[Lookup Match Output4]"
+              endId="Package\DimAccounts\PostingType Description.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\DimAccounts\Company Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DimAccounts.Paths[OLE DB Source Output]"
+              endId="Package\DimAccounts\Division Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\DimAccounts\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{56DC5D35-B9DB-4BE9-ACF4-73FCB6097729}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0D22BD72-973C-408F-BC33-0034803F98C0}"
+          SQLTask:SqlStatementSource="Truncate Table stg_Accounts" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{12E21960-6D05-4650-928A-320AEC7701FC}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Accounts to Staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{DCC889D0-1598-43F6-8979-B73C03F6E496}"
+      DTS:From="Package\Accounts to Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DimAccounts" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Execute SQL Task"
+          TopLeft="28.0000004768372,17.7411767194015" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Accounts to Staging"
+          TopLeft="30.8571433826369,91.7647071693183" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="113.028571929737,59.3411767194015">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.4235304499168"
+              Start="0,0"
+              End="0,24.9235304499168">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.9235304499168" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\DimAccounts"
+          TopLeft="40.0000006811959,185.364708482023" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="113.228572031916,133.364707169318">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.0000013127047"
+              Start="0,0"
+              End="0,44.5000013127047">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5000013127047" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Accounts to Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Accounts to Staging\OLE DB Source"
+          TopLeft="57.7142866971542,36.7058828677273" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Accounts to Staging\OLE DB Destination"
+          TopLeft="100.00000170299,178.023531908478" />
+        <EdgeLayout
+          Id="Package\Accounts to Staging.Paths[OLE DB Source Output]"
+          TopLeft="132.514286697154,78.3058828677273">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="52.6857150058357,99.7176490407502"
+              Start="0,0"
+              End="52.6857150058357,92.2176490407502">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.8588245203751" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.8588245203751"
+                    Point2="0,49.8588245203751"
+                    Point3="4,49.8588245203751" />
+                  <mssgle:LineSegment
+                    End="48.6857150058357,49.8588245203751" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48.6857150058357,49.8588245203751"
+                    Point2="52.6857150058357,49.8588245203751"
+                    Point3="52.6857150058357,53.8588245203751" />
+                  <mssgle:LineSegment
+                    End="52.6857150058357,92.2176490407502" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Accounts to Staging\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Accounts to Staging\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DimAccounts">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DimAccounts\OLE DB Source"
+          TopLeft="24,20" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\DimAccounts\Division Lookup"
+          TopLeft="112.8,123.2" />
+        <EdgeLayout
+          Id="Package\DimAccounts.Paths[OLE DB Source Output]"
+          TopLeft="98.8,61.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="90,61.6"
+              Start="0,0"
+              End="90,54.1">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.8"
+                    Point2="0,30.8"
+                    Point3="4,30.8" />
+                  <mssgle:LineSegment
+                    End="86,30.8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="86,30.8"
+                    Point2="90,30.8"
+                    Point3="90,34.8" />
+                  <mssgle:LineSegment
+                    End="90,54.1" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DimAccounts\Activity Lookup"
+          TopLeft="57.6,212.8" />
+        <EdgeLayout
+          Id="Package\DimAccounts.Paths[Lookup Match Output]"
+          TopLeft="188.8,164.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-56.4,48"
+              Start="0,0"
+              End="-56.4,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20"
+                    Point2="0,24"
+                    Point3="-4,24" />
+                  <mssgle:LineSegment
+                    End="-52.4,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-52.4,24"
+                    Point2="-56.4,24"
+                    Point3="-56.4,28" />
+                  <mssgle:LineSegment
+                    End="-56.4,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-76.39138671875,29,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="137.6,41.6"
+          Id="Package\DimAccounts\Area Lookup"
+          TopLeft="65.6,330.4" />
+        <EdgeLayout
+          Id="Package\DimAccounts.Paths[Lookup Match Output1]"
+          TopLeft="133.4,254.4">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76"
+              Start="0,0"
+              End="0,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,28.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="137.6,41.6"
+          Id="Package\DimAccounts\Staff Lookup"
+          TopLeft="236.8,420" />
+        <EdgeLayout
+          Id="Package\DimAccounts.Paths[Lookup Match Output2]"
+          TopLeft="134.4,372">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="171.2,47.9999999999999"
+              Start="0,0"
+              End="171.2,40.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20"
+                    Point2="0,24"
+                    Point3="4,24" />
+                  <mssgle:LineSegment
+                    End="167.2,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="167.2,24"
+                    Point2="171.2,24"
+                    Point3="171.2,28" />
+                  <mssgle:LineSegment
+                    End="171.2,40.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="37.40861328125,29,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\DimAccounts\Company Lookup"
+          TopLeft="413.6,371.2" />
+        <EdgeLayout
+          Id="Package\DimAccounts.Paths[Lookup Match Output3]"
+          TopLeft="374.4,440.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39.2,-48.8"
+              Start="0,0"
+              End="31.7,-48.8">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="15.6,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.6,0"
+                    Point2="19.6,0"
+                    Point3="19.6,-4" />
+                  <mssgle:LineSegment
+                    End="19.6,-44.8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.6,-44.8"
+                    Point2="19.6,-48.8"
+                    Point3="23.6,-48.8" />
+                  <mssgle:LineSegment
+                    End="31.7,-48.8" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.59138671875,1,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="191.2,41.6"
+          Id="Package\DimAccounts\PostingType Description"
+          TopLeft="469.6,246.4" />
+        <EdgeLayout
+          Id="Package\DimAccounts.Paths[Lookup Match Output4]"
+          TopLeft="493.6,371.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71.6,-83.2"
+              Start="0,0"
+              End="71.6,-75.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-37.6" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-37.6"
+                    Point2="0,-41.6"
+                    Point3="4,-41.6" />
+                  <mssgle:LineSegment
+                    End="67.6,-41.6" />
+                  <mssgle:CubicBezierSegment
+                    Point1="67.6,-41.6"
+                    Point2="71.6,-41.6"
+                    Point3="71.6,-45.6" />
+                  <mssgle:LineSegment
+                    End="71.6,-75.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-12.39138671875,-36.6,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimAccounts\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimAccounts\Division Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimAccounts\Activity Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimAccounts\Area Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimAccounts\Staff Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimAccounts\Company Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
