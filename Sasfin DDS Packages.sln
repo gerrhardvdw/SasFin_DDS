@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "DDS Packages", "..\DDS Packages.dtproj", "{C290FF15-259A-4CF4-BBE3-19409E03C51A}"
-EndProject
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Sasfin DDS Packages", "Sasfin DDS Packages\Sasfin DDS Packages.dtproj", "{FDA4CCEA-3E51-4093-BAF7-B4267F277E17}"
 EndProject
 Global
@@ -12,8 +10,6 @@ Global
 		Development|Default = Development|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C290FF15-259A-4CF4-BBE3-19409E03C51A}.Development|Default.ActiveCfg = Development
-		{C290FF15-259A-4CF4-BBE3-19409E03C51A}.Development|Default.Build.0 = Development
 		{FDA4CCEA-3E51-4093-BAF7-B4267F277E17}.Development|Default.ActiveCfg = Development
 		{FDA4CCEA-3E51-4093-BAF7-B4267F277E17}.Development|Default.Build.0 = Development
 	EndGlobalSection
