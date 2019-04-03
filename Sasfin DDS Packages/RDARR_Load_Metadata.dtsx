@@ -1,0 +1,1520 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/21/2019 6:44:37 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-BV4ITRF"
+  DTS:CreatorName="EOHCORP\Gerhard.VDWesthuizen"
+  DTS:DTSID="{09685901-5AF9-431A-A950-C5471EE89A76}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LocaleID="7177"
+  DTS:ObjectName="RDARR_Load_Metadata"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{93D3EED1-7CFC-4526-AC86-837E05314FC4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{E2C21F5E-004B-4BB0-92B6-9379AA1368B4}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Gerhard.VDWesthuizen\Documents\Sasfin\dtsx packages metadata.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{DC56A144-A4E9-4453-AA46-A09ADB0A20C4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet2$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Source_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Source#Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Source_Name]"
+                      name="Source_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Source]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Source]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Source]"
+                      name="Source"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection String 2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Connection String#2]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection String 2]"
+                      name="Connection String 2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection String 3]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Connection String#3]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection String 3]"
+                      name="Connection String 3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection String 4]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Connection String#4]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection String 4]"
+                      name="Connection String 4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection String 5]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Connection String#5]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection String 5]"
+                      name="Connection String 5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection Manager]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Connection Manager]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection Manager]"
+                      name="Connection Manager"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Connection Type]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection Type]"
+                      name="Connection Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#components]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#components]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#components]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#components"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component1]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component1]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component2]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component2]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component3]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component3]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component3]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component4]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component4]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component4]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component5]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component5]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component5]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component6]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component6]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component6]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component7]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component7]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component7]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component8]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component8]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component8]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component8"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component9]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component9]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component9]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component9"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen10]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen10]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen10]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Output Column]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Output Column]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Output Column]"
+                      name="Output Column"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen11]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen11]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen11]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen11"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen12]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen12]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen12]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen12"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen13]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen13]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen13]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen13"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Output Connection Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Output Connection Type]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Output Connection Type]"
+                      name="Output Connection Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#path]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#path]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#path]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#paths#path"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat1]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat1]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat2]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat2]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dts]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dts]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dts]"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dts"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt1]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt1]"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt2]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt2]"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt3]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt3]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt3]"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[DesignTimeProperties]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[DesignTimeProperties]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[DesignTimeProperties]"
+                      name="DesignTimeProperties"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Date Created]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Date Created]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Date Created]"
+                      name="Date Created"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorCompu]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorCompu]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorCompu]"
+                      name="Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorCompu"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorName]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorName]"
+                      name="Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Package]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Package]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Package]"
+                      name="Package"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Source#Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Source#Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Source]"
+                      dataType="wstr"
+                      length="255"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Connection String#2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Connection String#2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Connection String#3]"
+                      dataType="wstr"
+                      length="255"
+                      name="Connection String#3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Connection String#4]"
+                      dataType="wstr"
+                      length="255"
+                      name="Connection String#4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Connection String#5]"
+                      dataType="wstr"
+                      length="255"
+                      name="Connection String#5" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Connection Manager]"
+                      dataType="wstr"
+                      length="255"
+                      name="Connection Manager" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Connection Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Connection Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#components]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#components" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component3]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component4]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component5]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component5" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component6]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component7]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component7" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component8]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component8" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component9]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component9" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen10]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen10" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Output Column]"
+                      dataType="wstr"
+                      length="255"
+                      name="Output Column" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen11]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen11" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen12]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen12" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen13]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen13" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Output Connection Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Output Connection Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#path]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#paths#path" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dts]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dts" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt3]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[DesignTimeProperties]"
+                      dataType="nText"
+                      name="DesignTimeProperties" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Date Created]"
+                      dataType="wstr"
+                      length="255"
+                      name="Date Created" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorCompu]"
+                      dataType="wstr"
+                      length="255"
+                      name="Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorCompu" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorName]"
+                      dataType="wstr"
+                      length="255"
+                      name="Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Package]"
+                      dataType="wstr"
+                      length="255"
+                      name="Package" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Source#Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Source#Name]"
+                      name="Source#Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Source]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Source]"
+                      name="Source" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Connection String#2]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Connection String#2]"
+                      name="Connection String#2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Connection String#3]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Connection String#3]"
+                      name="Connection String#3" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Connection String#4]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Connection String#4]"
+                      name="Connection String#4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Connection String#5]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Connection String#5]"
+                      name="Connection String#5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Connection Manager]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Connection Manager]"
+                      name="Connection Manager" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Connection Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Connection Type]"
+                      name="Connection Type" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#components]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#components]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#components" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component1]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component1]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component2]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component2]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component3]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component3]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component3" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component4]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component4]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component5]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component5]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component5" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component6]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component6]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component7]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component7]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component7" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component8]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component8]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component8" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component9]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component9]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component9" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen10]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen10]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen10" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Output Column]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Output Column]"
+                      name="Output Column" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen11]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen11]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen11" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen12]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen12]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen12" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen13]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen13]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen13" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Output Connection Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Output Connection Type]"
+                      name="Output Connection Type" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#path]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#path]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#paths#path" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat1]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat1]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat2]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat2]"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dts]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dts]"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dts" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt1]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt1]"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt2]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt2]"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt3]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt3]"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt3" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[DesignTimeProperties]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[DesignTimeProperties]"
+                      name="DesignTimeProperties" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Date Created]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Date Created]"
+                      name="Date Created" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorCompu]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorCompu]"
+                      name="Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorCompu" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorName]"
+                      name="Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Package]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Package]"
+                      name="Package" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[meta].[tbExtract_Packages_Metadata]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{7C4103B5-88AA-4B22-B0E0-D9EC46149369}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[RDARR]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Source_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Source_Name"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source_Name]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Source_Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Source]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Source"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Source]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Connection String 2]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Connection String 2"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Connection String 2]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection String 2]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Connection String 3]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Connection String 3"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Connection String 3]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection String 3]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Connection String 4]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Connection String 4"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Connection String 4]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection String 4]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Connection String 5]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Connection String 5"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Connection String 5]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection String 5]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Connection Manager]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Connection Manager"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Connection Manager]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection Manager]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Connection Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Connection Type"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Connection Type]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Connection Type]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#components]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#components"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#components]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#components]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#component1"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component1]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component2]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#component2"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component2]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component2]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component3]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#component3"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component3]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component3]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component4]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#component4"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component4]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component4]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component5]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#component5"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component5]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component5]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component6]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#component6"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component6]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component6]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component7]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#component7"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component7]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component7]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component8]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#component8"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component8]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component8]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component9]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#component9"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component9]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#component9]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen10]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#componen10"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen10]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen10]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Output Column]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Output Column"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Output Column]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Output Column]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen11]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#componen11"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen11]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen11]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen12]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#componen12"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen12]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen12]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen13]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#componen13"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen13]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#componen13]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Output Connection Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Output Connection Type"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Output Connection Type]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Output Connection Type]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#path]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#paths#path"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#path]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#path]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat1"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat1]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat2]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat2"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat2]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat2]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dts]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dts"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dts]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dts]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt1"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt1]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt2]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt2"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt2]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt2]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt3]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt3"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt3]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt3]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DesignTimeProperties]"
+                      cachedDataType="nText"
+                      cachedName="DesignTimeProperties"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DesignTimeProperties]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[DesignTimeProperties]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Date Created]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Date Created"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date Created]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Date Created]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorCompu]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorCompu"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorCompu]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorCompu]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorName"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorName]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Package]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Package"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Package]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Package]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source_Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Source_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      dataType="wstr"
+                      length="255"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Connection String 2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Connection String 2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Connection String 3]"
+                      dataType="wstr"
+                      length="255"
+                      name="Connection String 3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Connection String 4]"
+                      dataType="wstr"
+                      length="255"
+                      name="Connection String 4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Connection String 5]"
+                      dataType="wstr"
+                      length="255"
+                      name="Connection String 5" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Connection Manager]"
+                      dataType="wstr"
+                      length="255"
+                      name="Connection Manager" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Connection Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Connection Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#components]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#components" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component3]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component4]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component5]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component5" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component6]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component7]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component7" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component8]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component8" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#component9]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#component9" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen10]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen10" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Output Column]"
+                      dataType="wstr"
+                      length="255"
+                      name="Output Column" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen11]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen11" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen12]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen12" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#componen13]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#componen13" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Output Connection Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Output Connection Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#path]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#paths#path" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#ObjectData#Namespace:#pipeline#paths#pat2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dts]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dts" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt3]"
+                      dataType="wstr"
+                      length="255"
+                      name="Executables#Executable#Namespace:www#microsoft#com/SqlServer/Dt3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DesignTimeProperties]"
+                      dataType="nText"
+                      name="DesignTimeProperties" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date Created]"
+                      dataType="wstr"
+                      length="255"
+                      name="Date Created" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorCompu]"
+                      dataType="wstr"
+                      length="255"
+                      name="Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorCompu" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorName]"
+                      dataType="wstr"
+                      length="255"
+                      name="Namespace:www#microsoft#com/SqlServer/Dts#Attribute:CreatorName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Package]"
+                      dataType="wstr"
+                      length="255"
+                      name="Package" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="248.000004223415,61.7882361606743" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="313.142862475648,202.494120486962" />
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\Data Flow Task\Excel Source"
+          TopLeft="220.000003746578,67.2941185908334" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="289.200003746578,108.894118590833">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="109.142858729071,93.600001896129"
+              Start="0,0"
+              End="109.142858729071,86.100001896129">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.8000009480645" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.8000009480645"
+                    Point2="0,46.8000009480645"
+                    Point3="4,46.8000009480645" />
+                  <mssgle:LineSegment
+                    End="105.142858729071,46.8000009480645" />
+                  <mssgle:CubicBezierSegment
+                    Point1="105.142858729071,46.8000009480645"
+                    Point2="109.142858729071,46.8000009480645"
+                    Point3="109.142858729071,50.8000009480645" />
+                  <mssgle:LineSegment
+                    End="109.142858729071,86.100001896129" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
