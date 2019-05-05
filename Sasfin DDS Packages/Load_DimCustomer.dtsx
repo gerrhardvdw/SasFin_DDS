@@ -1,0 +1,217 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/5/2019 12:23:08 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-GVDW"
+  DTS:CreatorName="EOHCORP\Gerhard.VDWesthuizen"
+  DTS:DTSID="{35773A67-A948-4084-AB74-96F860FE3E3F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1300.375"
+  DTS:LocaleID="7177"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{B838041F-C907-4E0A-BE7B-F28B2AC7A46E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.15.11.90\i01.DDS.CubeUser]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0FB347C3-1C58-47BB-BD4C-06844D440FD8}"
+      DTS:ObjectName="10.15.11.90\i01.DDS.CubeUser">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.15.11.90\i01;User ID=CubeUser;Initial Catalog=DDS;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMkSMJawlTEG1Vyn8WqtLlgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC5LdapdHCWZTqRRqX1TOpzuudbFdDs6OR7JfKRaM4ksgAAAAAOgAAAAAIAACAAAABuwZ1lQNyLxfkbbNBAFUYrEHC21EP7qd8Ik1tSdzKqxhAAAADzXE/aBI1wrWGx6vt5oC4PQAAAABrsc/itkORqbhv7Z1OKCEJrg5nxUkE5vTsVYB/u714d9mAEE1ZLSbFGA5QTK2saNtVdXg44ksVUOw/dYV6oSAg</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.15.11.90\i01.SBANK.CubeUser]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7BD8DC2C-E346-4B56-AEB8-69FDE8D4974D}"
+      DTS:ObjectName="10.15.11.90\i01.SBANK.CubeUser">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.15.11.90\i01;User ID=CubeUser;Initial Catalog=SBANK;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMkSMJawlTEG1Vyn8WqtLlgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAynH/vGBdwVw2a6yKQPbwNz0jpUt+oRv+btDxrWJBPEQAAAAAOgAAAAAIAACAAAACwtf1VnX7ZFaYV4IPChN+CaP7Ra77T11nNAnOxl3aMVRAAAACE2iYEZmi/UvuDQmqNrBZKQAAAAFUx2h1UTiQ5ZF2uWBNbd6OrhoxlxDaebsxpAthT9d6dyCUzxh9HJMjg00Wvv8cziu+3J+B40bFq050PAATY7uY</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Clear Staging"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{BEE7CB6C-C21A-472E-9276-E0E0E123920B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clear Staging"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0FB347C3-1C58-47BB-BD4C-06844D440FD8}"
+          SQLTask:SqlStatementSource="Truncate Table stg_Customer" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Customers from other DBs"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{8E6A7F83-9655-4E68-8A21-62F414289E7F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Customers from other DBs"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0FB347C3-1C58-47BB-BD4C-06844D440FD8}"
+          SQLTask:SqlStatementSource="Exec [dbo].[sp_Customers_Other]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DimCustomers"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{EDA3A68F-36FC-4B1C-B169-36067E8CEF8A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DimCustomers"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0FB347C3-1C58-47BB-BD4C-06844D440FD8}"
+          SQLTask:SqlStatementSource="Exec [dbo].[sp_Update_DimCustomers]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{0799B0CF-0922-4A5F-B554-3D1781033476}"
+      DTS:From="Package\Clear Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Customers from other DBs" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{00A4C249-3F68-4363-A82F-5B0755F57752}"
+      DTS:From="Package\Customers from other DBs"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DimCustomers" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\Clear Staging"
+          TopLeft="28.0000004768372,8.56470600246971" />
+        <NodeLayout
+          Size="203.2,41.6"
+          Id="Package\Customers from other DBs"
+          TopLeft="50.2857151420749,117.458825176727" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="98.4000004768372,50.1647060024697">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="53.4857146652377,67.2941191742577"
+              Start="0,0"
+              End="53.4857146652377,59.7941191742577">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.6470595871289" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.6470595871289"
+                    Point2="0,33.6470595871289"
+                    Point3="4,33.6470595871289" />
+                  <mssgle:LineSegment
+                    End="49.4857146652377,33.6470595871289" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49.4857146652377,33.6470595871289"
+                    Point2="53.4857146652377,33.6470595871289"
+                    Point3="53.4857146652377,37.6470595871289" />
+                  <mssgle:LineSegment
+                    End="53.4857146652377,59.7941191742577" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\DimCustomers"
+          TopLeft="147.428573939265,209.835297060508" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="151.885715142075,159.058825176727">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="68.7428587971902,50.7764718837804"
+              Start="0,0"
+              End="68.7428587971902,43.2764718837804">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.3882359418902" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.3882359418902"
+                    Point2="0,25.3882359418902"
+                    Point3="4,25.3882359418902" />
+                  <mssgle:LineSegment
+                    End="64.7428587971902,25.3882359418902" />
+                  <mssgle:CubicBezierSegment
+                    Point1="64.7428587971902,25.3882359418902"
+                    Point2="68.7428587971902,25.3882359418902"
+                    Point3="68.7428587971902,29.3882359418902" />
+                  <mssgle:LineSegment
+                    End="68.7428587971902,43.2764718837804" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

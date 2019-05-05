@@ -5,6 +5,10 @@
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=10.15.11.90\i01;Initial Catalog=SBANK;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      DTS:ConnectionString="Data Source=10.15.11.90\i01;User ID=CubeUser;Initial Catalog=SBANK;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMkSMJawlTEG1Vyn8WqtLlgAAAAACAAAAAAAQZgAAAAEAACAAAAAgIYb5SgKKxh0HsOCRwqLaoQLKyBf7g1B8ltK5jlKnxQAAAAAOgAAAAAIAACAAAADGi528C6SUy1A+/SNeZWyOrDsywMRSaA24W9RlzE9U44AAAAAmsyF8Sxezq6iawu6IFRfryWuSAIqGPktl1mrAPAkBDHOb3tEHqz6Ce9nRADQSxvXmBvDsgmufFJFoObkjW4Ur0UE1zWdebGgGqlKRYkQzsSimFgSqvZRLMjGRhFt5UKWBMgzSVgWl2Jko3PenL/xXNH0wYYol8xOCMAnAXMbjM0AAAABidAQgD8Sz+KqU32fBdq4/dfrJhzP4Plv536CbhrGAZm/j9F/wQ8uirXAP880k0NGrp0B7Hsh/k54ho+tZUnjc</DTS:Password>
+    </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>
