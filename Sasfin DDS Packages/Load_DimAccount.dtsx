@@ -11,27 +11,10 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="Load_DimAccount"
   DTS:PackageType="5"
-  DTS:VersionBuild="54"
-  DTS:VersionGUID="{C5C663AC-33D3-4634-9F6F-9E7A741105E8}">
+  DTS:VersionBuild="55"
+  DTS:VersionGUID="{D800D6DB-8876-4B43-B4CF-F359B48A6208}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[10.15.11.90\i01.DDS.CubeUser]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{F2918D3B-6E26-4C1B-860A-9DA8D27FB993}"
-      DTS:ObjectName="10.15.11.90\i01.DDS.CubeUser">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=10.15.11.90\i01;User ID=CubeUser;Initial Catalog=DDS;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMkSMJawlTEG1Vyn8WqtLlgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABYnFS4lO4W99sWgG9GxChIRRv+uIDKyu4Gvb6LsV41EwAAAAAOgAAAAAIAACAAAABYUyp1OIwZJLdupm/Vz9JX0/0Y9aPMFzaIM9TrCXKKvRAAAAAgCxH8t0yIh2unSRkGaM1tQAAAAP31lQcrrQsbozs5zG7VebxCS0F1AAPlc2WE9AI+v2hh3k/LMUlPfhJa/FOFy76rQwVIAHq1GkVFXdb7iu4FzfE</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -192,8 +175,8 @@
               <connections>
                 <connection
                   refId="Package\Accounts to Staging\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[10.15.11.90\i01.DDS.CubeUser]"
-                  connectionManagerRefId="Package.ConnectionManagers[10.15.11.90\i01.DDS.CubeUser]"
+                  connectionManagerID="{F2918D3B-6E26-4C1B-860A-9DA8D27FB993}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DDS_SQLUser]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3686,8 +3669,8 @@ where [refTable].[GP Code] = ?</property>
               <connections>
                 <connection
                   refId="Package\stg_DimAccounts\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[10.15.11.90\i01.DDS.CubeUser]"
-                  connectionManagerRefId="Package.ConnectionManagers[10.15.11.90\i01.DDS.CubeUser]"
+                  connectionManagerID="{F2918D3B-6E26-4C1B-860A-9DA8D27FB993}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DDS_SQLUser]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>

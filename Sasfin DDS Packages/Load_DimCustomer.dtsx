@@ -11,49 +11,16 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{B838041F-C907-4E0A-BE7B-F28B2AC7A46E}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{749A3903-70A9-47D9-8BF3-C622FFF74423}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[10.15.11.90\i01.DDS.CubeUser]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{0FB347C3-1C58-47BB-BD4C-06844D440FD8}"
-      DTS:ObjectName="10.15.11.90\i01.DDS.CubeUser">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=10.15.11.90\i01;User ID=CubeUser;Initial Catalog=DDS;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMkSMJawlTEG1Vyn8WqtLlgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC5LdapdHCWZTqRRqX1TOpzuudbFdDs6OR7JfKRaM4ksgAAAAAOgAAAAAIAACAAAABuwZ1lQNyLxfkbbNBAFUYrEHC21EP7qd8Ik1tSdzKqxhAAAADzXE/aBI1wrWGx6vt5oC4PQAAAABrsc/itkORqbhv7Z1OKCEJrg5nxUkE5vTsVYB/u714d9mAEE1ZLSbFGA5QTK2saNtVdXg44ksVUOw/dYV6oSAg</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[10.15.11.90\i01.SBANK.CubeUser]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{7BD8DC2C-E346-4B56-AEB8-69FDE8D4974D}"
-      DTS:ObjectName="10.15.11.90\i01.SBANK.CubeUser">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=10.15.11.90\i01;User ID=CubeUser;Initial Catalog=SBANK;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMkSMJawlTEG1Vyn8WqtLlgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAynH/vGBdwVw2a6yKQPbwNz0jpUt+oRv+btDxrWJBPEQAAAAAOgAAAAAIAACAAAACwtf1VnX7ZFaYV4IPChN+CaP7Ra77T11nNAnOxl3aMVRAAAACE2iYEZmi/UvuDQmqNrBZKQAAAAFUx2h1UTiQ5ZF2uWBNbd6OrhoxlxDaebsxpAthT9d6dyCUzxh9HJMjg00Wvv8cziu+3J+B40bFq050PAATY7uY</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Clear Staging"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{BEE7CB6C-C21A-472E-9276-E0E0E123920B}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -70,7 +37,6 @@
       DTS:refId="Package\Customers from other DBs"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{8E6A7F83-9655-4E68-8A21-62F414289E7F}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -138,6 +104,10 @@
           Size="203.2,41.6"
           Id="Package\Customers from other DBs"
           TopLeft="50.2857151420749,117.458825176727" />
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\DimCustomers"
+          TopLeft="147.428573939265,209.835297060508" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="98.4000004768372,50.1647060024697">
@@ -172,10 +142,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="146.4,41.6"
-          Id="Package\DimCustomers"
-          TopLeft="147.428573939265,209.835297060508" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="151.885715142075,159.058825176727">

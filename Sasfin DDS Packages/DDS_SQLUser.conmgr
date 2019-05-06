@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DDS_SQLUser"
+  DTS:DTSID="{F2918D3B-6E26-4C1B-860A-9DA8D27FB993}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=10.15.11.90\i01;User ID=CubeUser;Initial Catalog=DDS;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMkSMJawlTEG1Vyn8WqtLlgAAAAACAAAAAAAQZgAAAAEAACAAAADUjfJ+gHZM7Aoro/CNyq99OeCovwLKerKifyLTS97HkgAAAAAOgAAAAAIAACAAAAANRXXBcB/sCFmmYQukVpo0DM4ZNPD3VhdVcUQ6YH2rToAAAACEhfRnZGbtBPivxEXnnSc2gchICUUejWlSESt9soGtbR/A3taU6MfwSLJO53qsKONqtiPX0BenhTzLvSGq950ukTwzbqcPtmie3h2baTNPGuccNapXBnwDkJBi++24XGXii6IQmlsQqNn6/9W+t5F4vMONRjCkm/D+ncMDN+Q3NEAAAADTyp8Rq0LTEMW7YlXNPB4K56Wr6qOJ+f57lNTb2dUwli1JMgZbsHrTe4cm2cLuRLdTwqWFPVFtmnauzSDMBwC2</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
