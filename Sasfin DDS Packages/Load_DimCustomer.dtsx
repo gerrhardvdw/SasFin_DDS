@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{749A3903-70A9-47D9-8BF3-C622FFF74423}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{9C430C9B-C865-4298-AB39-70F5DA4C2188}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -29,7 +29,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{0FB347C3-1C58-47BB-BD4C-06844D440FD8}"
+          SQLTask:Connection="{2B998721-D8AD-4961-B70C-26031541CA2F}"
           SQLTask:SqlStatementSource="Truncate Table stg_Customer" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
