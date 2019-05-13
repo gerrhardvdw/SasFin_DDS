@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="5/6/2019 9:20:27 AM"
+  DTS:CreationDate="5/9/2019 9:28:17 AM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-GVDW"
   DTS:CreatorName="EOHCORP\Gerhard.VDWesthuizen"
-  DTS:DTSID="{8CE7EF39-038A-49FB-9BCB-C0FC254E154F}"
+  DTS:DTSID="{721A93E1-09C6-46CD-8C29-E59BD521D8C2}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.0900.40"
   DTS:LocaleID="7177"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="LoadFactPurchaseOrders"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{3DB38946-37F2-44C5-98A4-0D0322C80363}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{5CA5071E-F8B8-48C8-8E67-81F90DAEBB3E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,7 +21,7 @@
       DTS:refId="Package\Clear Staging"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{864A83DC-0B32-4B8F-BB54-BC6D7FF685B0}"
+      DTS:DTSID="{FE34581B-1A13-472E-9446-2D7327A597FE}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Clear Staging"
@@ -30,39 +30,55 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2B998721-D8AD-4961-B70C-26031541CA2F}"
-          SQLTask:SqlStatementSource="Truncate Table stg_ReceivableTransactions" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="Truncate Table stg_PurchaseOrders" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Other DBs to Staging"
+      DTS:refId="Package\PurchaseOrders to Staging"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{720707C3-E756-4005-AD85-D8CBF3283C93}"
+      DTS:DTSID="{EA73C17E-4DCC-48BB-AADA-0D6DDD19B8C2}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Other DBs to Staging"
+      DTS:ObjectName="PurchaseOrders to Staging"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{0FB347C3-1C58-47BB-BD4C-06844D440FD8}"
-          SQLTask:SqlStatementSource="Exec [ReceivableTransactions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{3814654C-EB9E-4392-8884-92F10D867E8D}"
+          SQLTask:SqlStatementSource="Exec stg_PurchaseOrders" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Update FactReceivableTransactions"
+      DTS:refId="Package\Update FactPurchaseOrders"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{E7354F27-C257-4216-9720-8522E026DEE9}"
+      DTS:DTSID="{1D2CA0CE-4522-4FBE-9653-B65FAD0B5135}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Update FactReceivableTransactions"
+      DTS:ObjectName="Update FactPurchaseOrders"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{0FB347C3-1C58-47BB-BD4C-06844D440FD8}"
-          SQLTask:SqlStatementSource="Exec [dbo].[Update_FactReceivablesTransactions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{3814654C-EB9E-4392-8884-92F10D867E8D}"
+          SQLTask:SqlStatementSource="Exec UpdateFactPurchaseOrders" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update PurchaseOrdersHashValues"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7F9E2B8D-5F3D-4A64-9B33-F419A27662E9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update PurchaseOrdersHashValues"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3814654C-EB9E-4392-8884-92F10D867E8D}"
+          SQLTask:SqlStatementSource="Exec Update_PurchaseOrders_HashValues" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -70,19 +86,27 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{0624DCD5-AA14-4C9A-A45B-32DD205F5CF7}"
+      DTS:DTSID="{4D163CF3-E2B3-43BB-9E73-2BAE6C12FBD6}"
       DTS:From="Package\Clear Staging"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Other DBs to Staging" />
+      DTS:To="Package\PurchaseOrders to Staging" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{E85D26CC-ECAD-423C-99D8-7A37C540EDBB}"
-      DTS:From="Package\Other DBs to Staging"
+      DTS:DTSID="{1E29B191-C26F-48C5-A808-301B95A3B7FC}"
+      DTS:From="Package\PurchaseOrders to Staging"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
-      DTS:To="Package\Update FactReceivableTransactions" />
+      DTS:To="Package\Update PurchaseOrdersHashValues" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{9BC45413-4BFE-4B53-8F3D-68A31C515F7B}"
+      DTS:From="Package\Update PurchaseOrdersHashValues"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Update FactPurchaseOrders" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -97,31 +121,57 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="244.8,41.6"
+          Size="243.2,41.6"
           Id="Package\Clear Staging"
           TopLeft="5.50000000000003,5.49999999999995" />
         <NodeLayout
-          Size="244.8,41.6"
-          Id="Package\Other DBs to Staging"
-          TopLeft="5.50000000000003,208.7" />
+          Size="243.2,41.6"
+          Id="Package\PurchaseOrders to Staging"
+          TopLeft="5.50000000000003,107.1" />
         <NodeLayout
-          Size="244.8,41.6"
-          Id="Package\Update FactReceivableTransactions"
-          TopLeft="5.50000000000003,310.3" />
+          Size="243.2,41.6"
+          Id="Package\Update PurchaseOrdersHashValues"
+          TopLeft="5.50000000000003,208.7" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="127.9,47.1">
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="127.1,148.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,161.6"
+              EndConnector="0,60.0000000000001"
               Start="0,0"
-              End="0,154.1">
+              End="0,52.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,154.1" />
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="243.2,41.6"
+          Id="Package\Update FactPurchaseOrders"
+          TopLeft="5.50000000000003,310.3" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="127.1,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -131,8 +181,8 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="127.9,250.3">
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="127.1,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"

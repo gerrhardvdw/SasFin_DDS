@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="5/6/2019 9:20:27 AM"
+  DTS:CreationDate="5/8/2019 11:00:16 AM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-GVDW"
   DTS:CreatorName="EOHCORP\Gerhard.VDWesthuizen"
-  DTS:DTSID="{8CE7EF39-038A-49FB-9BCB-C0FC254E154F}"
+  DTS:DTSID="{EC960A57-3D30-4C91-A27F-47DE6FE76D8C}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.0900.40"
   DTS:LocaleID="7177"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{3DB38946-37F2-44C5-98A4-0D0322C80363}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{533054BD-6A2A-40E6-938B-270E6ED36A28}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,7 +21,7 @@
       DTS:refId="Package\Clear Staging"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{864A83DC-0B32-4B8F-BB54-BC6D7FF685B0}"
+      DTS:DTSID="{61321BD3-8B15-436A-93AF-27D38D91264B}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Clear Staging"
@@ -30,39 +30,39 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2B998721-D8AD-4961-B70C-26031541CA2F}"
-          SQLTask:SqlStatementSource="Truncate Table stg_ReceivableTransactions" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="Truncate Table stg_SalesTransactions" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Other DBs to Staging"
+      DTS:refId="Package\Sales Transactions to Staging"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{720707C3-E756-4005-AD85-D8CBF3283C93}"
+      DTS:DTSID="{B784A9C8-F325-4D00-8965-363CA1E1E7A3}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Other DBs to Staging"
+      DTS:ObjectName="Sales Transactions to Staging"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{0FB347C3-1C58-47BB-BD4C-06844D440FD8}"
-          SQLTask:SqlStatementSource="Exec [ReceivableTransactions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{3814654C-EB9E-4392-8884-92F10D867E8D}"
+          SQLTask:SqlStatementSource="Exec [dbo].[SalesAccountTransactions] " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Update FactReceivableTransactions"
+      DTS:refId="Package\Update FactSalesTransactions"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{E7354F27-C257-4216-9720-8522E026DEE9}"
+      DTS:DTSID="{102160AE-50E2-4EE1-8380-93E36367088E}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Update FactReceivableTransactions"
+      DTS:ObjectName="Update FactSalesTransactions"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{0FB347C3-1C58-47BB-BD4C-06844D440FD8}"
-          SQLTask:SqlStatementSource="Exec [dbo].[Update_FactReceivablesTransactions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{3814654C-EB9E-4392-8884-92F10D867E8D}"
+          SQLTask:SqlStatementSource="Exec UpdateFactSalesTransactions" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -70,19 +70,19 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{0624DCD5-AA14-4C9A-A45B-32DD205F5CF7}"
+      DTS:DTSID="{9849DD71-286C-40FD-BA09-8669C4FF52FC}"
       DTS:From="Package\Clear Staging"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Other DBs to Staging" />
+      DTS:To="Package\Sales Transactions to Staging" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{E85D26CC-ECAD-423C-99D8-7A37C540EDBB}"
-      DTS:From="Package\Other DBs to Staging"
+      DTS:DTSID="{AECA94B6-6CB0-4CE5-A930-5DDFC1AE9C53}"
+      DTS:From="Package\Sales Transactions to Staging"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
-      DTS:To="Package\Update FactReceivableTransactions" />
+      DTS:To="Package\Update FactSalesTransactions" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -97,31 +97,43 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="244.8,41.6"
+          Size="140.8,41.6"
           Id="Package\Clear Staging"
-          TopLeft="5.50000000000003,5.49999999999995" />
+          TopLeft="62.2857153464337,26.3058827218712" />
         <NodeLayout
-          Size="244.8,41.6"
-          Id="Package\Other DBs to Staging"
-          TopLeft="5.50000000000003,208.7" />
+          Size="216.8,41.6"
+          Id="Package\Sales Transactions to Staging"
+          TopLeft="68.5714297391931,125.411766464735" />
         <NodeLayout
-          Size="244.8,41.6"
-          Id="Package\Update FactReceivableTransactions"
-          TopLeft="5.50000000000003,310.3" />
+          Size="218.4,41.6"
+          Id="Package\Update FactSalesTransactions"
+          TopLeft="75.4285727131124,218.400003062978" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="127.9,47.1">
+          TopLeft="132.685715346434,67.9058827218712">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,161.6"
+              EndConnector="44.2857143927594,57.5058837428638"
               Start="0,0"
-              End="0,154.1">
+              End="44.2857143927594,50.0058837428638">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,154.1" />
+                    End="0,24.7529418714319" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.7529418714319"
+                    Point2="0,28.7529418714319"
+                    Point3="4,28.7529418714319" />
+                  <mssgle:LineSegment
+                    End="40.2857143927594,28.7529418714319" />
+                  <mssgle:CubicBezierSegment
+                    Point1="40.2857143927594,28.7529418714319"
+                    Point2="44.2857143927594,28.7529418714319"
+                    Point3="44.2857143927594,32.7529418714319" />
+                  <mssgle:LineSegment
+                    End="44.2857143927594,50.0058837428638" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -132,18 +144,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="127.9,250.3">
+          TopLeft="180.800001226153,167.011766464735">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,51.3882365982425"
               Start="0,0"
-              End="0,52.5">
+              End="0,43.8882365982425">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,43.8882365982425" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="Load_DimAccount"
   DTS:PackageType="5"
-  DTS:VersionBuild="55"
-  DTS:VersionGUID="{D800D6DB-8876-4B43-B4CF-F359B48A6208}">
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{A675528D-9238-48D6-95DC-BA124B58A4B0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -28,1759 +28,19 @@
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Accounts to Staging"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{EFB25208-4E8D-4ED7-9E34-603C6926B71D}"
-      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:refId="Package\Accounts to staging"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BFF58172-4684-48A0-8FF1-C18B00497582}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Accounts to Staging"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      DTS:ObjectName="Accounts to staging"
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
-        <pipeline
-          version="1">
-          <components>
-            <component
-              refId="Package\Accounts to Staging\Derived Column"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Accounts to Staging\Derived Column.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Accounts to Staging\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Accounts to Staging\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Accounts to Staging\Derived Column.Outputs[Derived Column Output].Columns[Database]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Accounts to Staging\Derived Column.Outputs[Derived Column Output].Columns[Database]"
-                      name="Database"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">"SBANK"</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">"SBANK"</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Accounts to Staging\Derived Column.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Accounts to Staging\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Accounts to Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Accounts to Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Accounts to Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Accounts to Staging\OLE DB Destination"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="OLE DB Destination"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[stg_Accounts]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Accounts to Staging\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{F2918D3B-6E26-4C1B-860A-9DA8D27FB993}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DDS_SQLUser]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Account Number]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="129"
-                      cachedName="Account Number"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Number]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Number]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Account Description]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="51"
-                      cachedName="Account Description"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Description]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Description]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Posting Type]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Posting Type"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Posting Type]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Posting Type]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Account Category Number]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Account Category Number"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Category Number]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Category Number]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Account Alias]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="21"
-                      cachedName="Account Alias"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Alias]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Alias]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Account Index]"
-                      cachedDataType="i4"
-                      cachedName="Account Index"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Index]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Index]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Account Type]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Account Type"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Type]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Type]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Active]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Active"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Active]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Adjust for Inflation]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Adjust for Inflation"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Adjust for Inflation]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Adjust for Inflation]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Allow Account Entry]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Allow Account Entry"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Allow Account Entry]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Allow Account Entry]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Balance For Calculation]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Balance For Calculation"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Balance For Calculation]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Balance For Calculation]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Conversion Method]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Conversion Method"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Conversion Method]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Conversion Method]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Created Date]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="Created Date"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Created Date]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Created Date]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Decimal Places]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Decimal Places"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Decimal Places]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Decimal Places]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fixed Or Variable]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Fixed Or Variable"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fixed Or Variable]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fixed Or Variable]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Historical Rate]"
-                      cachedDataType="numeric"
-                      cachedName="Historical Rate"
-                      cachedPrecision="19"
-                      cachedScale="7"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Historical Rate]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Historical Rate]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Inflation Equity Account Index]"
-                      cachedDataType="i4"
-                      cachedName="Inflation Equity Account Index"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Inflation Equity Account Index]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Inflation Equity Account Index]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Inflation Revenue Account Index]"
-                      cachedDataType="i4"
-                      cachedName="Inflation Revenue Account Index"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Inflation Revenue Account Index]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Inflation Revenue Account Index]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Main Account Segment]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="67"
-                      cachedName="Main Account Segment"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Main Account Segment]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Main Account Segment]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Modified Date]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="Modified Date"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Modified Date]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Modified Date]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Note Index]"
-                      cachedDataType="numeric"
-                      cachedName="Note Index"
-                      cachedPrecision="19"
-                      cachedScale="5"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Note Index]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Note Index]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Post Inventory In]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Post Inventory In"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Post Inventory In]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Post Inventory In]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Post Payroll In]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Post Payroll In"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Post Payroll In]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Post Payroll In]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Post Purchasing In]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Post Purchasing In"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Post Purchasing In]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Post Purchasing In]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Post Sales In]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Post Sales In"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Post Sales In]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Post Sales In]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Segment1]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="7"
-                      cachedName="Segment1"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment1]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment1]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Segment2]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="7"
-                      cachedName="Segment2"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment2]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment2]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Segment3]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="7"
-                      cachedName="Segment3"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment3]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment3]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Segment4]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="7"
-                      cachedName="Segment4"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment4]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment4]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Segment5]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="7"
-                      cachedName="Segment5"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment5]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment5]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Segment6]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="7"
-                      cachedName="Segment6"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment6]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment6]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Typical Balance]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Typical Balance"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Typical Balance]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Typical Balance]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[User Defined 1]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="21"
-                      cachedName="User Defined 1"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User Defined 1]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[User Defined 1]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[User Defined 2]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="21"
-                      cachedName="User Defined 2"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User Defined 2]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[User Defined 2]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[User Defined String 1]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="31"
-                      cachedName="User Defined String 1"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User Defined String 1]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[User Defined String 1]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[User Defined String 2]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="31"
-                      cachedName="User Defined String 2"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User Defined String 2]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[User Defined String 2]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Segments]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="1"
-                      cachedName="Segments"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segments]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segments]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Clear Balance]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="Clear Balance"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Clear Balance]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Clear Balance]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Account Index For Drillback]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="2056"
-                      cachedName="Account Index For Drillback"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Index For Drillback]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Index For Drillback]" />
-                    <inputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Database]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="Database"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Database]"
-                      lineageId="Package\Accounts to Staging\Derived Column.Outputs[Derived Column Output].Columns[Database]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="129"
-                      name="Account Number" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Description]"
-                      codePage="1252"
-                      dataType="str"
-                      length="51"
-                      name="Account Description" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Posting Type]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Posting Type" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Category Number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Account Category Number" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Alias]"
-                      codePage="1252"
-                      dataType="str"
-                      length="21"
-                      name="Account Alias" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Index]"
-                      dataType="i4"
-                      name="Account Index" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Type]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Account Type" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Active" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Adjust for Inflation]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Adjust for Inflation" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Allow Account Entry]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Allow Account Entry" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Balance For Calculation]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Balance For Calculation" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Conversion Method]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Conversion Method" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Created Date]"
-                      dataType="dbTimeStamp"
-                      name="Created Date" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Decimal Places]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Decimal Places" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fixed Or Variable]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Fixed Or Variable" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Historical Rate]"
-                      dataType="numeric"
-                      name="Historical Rate"
-                      precision="19"
-                      scale="7" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Inflation Equity Account Index]"
-                      dataType="i4"
-                      name="Inflation Equity Account Index" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Inflation Revenue Account Index]"
-                      dataType="i4"
-                      name="Inflation Revenue Account Index" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Main Account Segment]"
-                      codePage="1252"
-                      dataType="str"
-                      length="67"
-                      name="Main Account Segment" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Modified Date]"
-                      dataType="dbTimeStamp"
-                      name="Modified Date" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Note Index]"
-                      dataType="numeric"
-                      name="Note Index"
-                      precision="19"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Post Inventory In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Post Inventory In" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Post Payroll In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Post Payroll In" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Post Purchasing In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Post Purchasing In" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Post Sales In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Post Sales In" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment1" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment2" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment3]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment3" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment4]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment4" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment5]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment5" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment6]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment6" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Typical Balance]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Typical Balance" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User Defined 1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="21"
-                      name="User Defined 1" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User Defined 2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="21"
-                      name="User Defined 2" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User Defined String 1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="31"
-                      name="User Defined String 1" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User Defined String 2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="31"
-                      name="User Defined String 2" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segments]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1"
-                      name="Segments" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Clear Balance]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Clear Balance" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Index For Drillback]"
-                      codePage="1252"
-                      dataType="str"
-                      length="2056"
-                      name="Account Index For Drillback" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Database]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="Database" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Accounts to Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Accounts to Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Accounts to Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Accounts to Staging\OLE DB Source"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="OLE DB Source"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[Accounts]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [Entity]
-,SUBSTRING([Entity],CHARINDEX('.',[Entity])+1,LEN([Entity])) as [ExtractedEntity]
-      ,[ACTINDX]
-,Trim([AccountNr]) + '-' + Left(Trim([Division])+'  ',3) + '-' + Trim([Activity]) + '-' + Trim([Area]) + '-' + Trim([Staff]) + '-' + Trim([Company]) as [SystemAccountNr]
-      ,[AccountNr]
-      ,[AccountDescr]
-      ,Trim([Division]) as [Division]
-      ,Trim([Activity]) as [Activity]
-      ,Trim([Area]) as [Area]
-      ,Trim([Staff]) as [Staff]
-      ,Trim([Company]) as [Company]
-      ,[FullAccountNr]
-      ,[StartDate]
-      ,[EndDate]
-  FROM [RDARR].[dbo].[tbGLAccounts]</property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Accounts to Staging\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{0A4AB394-4FC8-4B45-AC82-479BF987C232}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SBANK]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Number]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account Number]"
-                      length="129"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Number]"
-                      name="Account Number"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Description]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account Description]"
-                      length="51"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Description]"
-                      name="Account Description"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Posting Type]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Posting Type]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Posting Type]"
-                      name="Posting Type"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Category Number]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account Category Number]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Category Number]"
-                      name="Account Category Number"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Alias]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account Alias]"
-                      length="21"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Alias]"
-                      name="Account Alias"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Index]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account Index]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Index]"
-                      name="Account Index"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Type]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account Type]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Type]"
-                      name="Account Type"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Active]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Active]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Active]"
-                      name="Active"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Adjust for Inflation]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Adjust for Inflation]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Adjust for Inflation]"
-                      name="Adjust for Inflation"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Allow Account Entry]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Allow Account Entry]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Allow Account Entry]"
-                      name="Allow Account Entry"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Balance For Calculation]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Balance For Calculation]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Balance For Calculation]"
-                      name="Balance For Calculation"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Conversion Method]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Conversion Method]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Conversion Method]"
-                      name="Conversion Method"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Created Date]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Created Date]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Created Date]"
-                      name="Created Date"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Decimal Places]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Decimal Places]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Decimal Places]"
-                      name="Decimal Places"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fixed Or Variable]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Fixed Or Variable]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fixed Or Variable]"
-                      name="Fixed Or Variable"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Historical Rate]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Historical Rate]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Historical Rate]"
-                      name="Historical Rate"
-                      precision="19"
-                      scale="7"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Inflation Equity Account Index]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Inflation Equity Account Index]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Inflation Equity Account Index]"
-                      name="Inflation Equity Account Index"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Inflation Revenue Account Index]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Inflation Revenue Account Index]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Inflation Revenue Account Index]"
-                      name="Inflation Revenue Account Index"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Main Account Segment]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Main Account Segment]"
-                      length="67"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Main Account Segment]"
-                      name="Main Account Segment"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Modified Date]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Modified Date]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Modified Date]"
-                      name="Modified Date"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Note Index]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Note Index]"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Note Index]"
-                      name="Note Index"
-                      precision="19"
-                      scale="5"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Post Inventory In]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Post Inventory In]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Post Inventory In]"
-                      name="Post Inventory In"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Post Payroll In]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Post Payroll In]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Post Payroll In]"
-                      name="Post Payroll In"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Post Purchasing In]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Post Purchasing In]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Post Purchasing In]"
-                      name="Post Purchasing In"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Post Sales In]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Post Sales In]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Post Sales In]"
-                      name="Post Sales In"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment1]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment1]"
-                      length="7"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment1]"
-                      name="Segment1"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment2]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment2]"
-                      length="7"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment2]"
-                      name="Segment2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment3]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment3]"
-                      length="7"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment3]"
-                      name="Segment3"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment4]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment4]"
-                      length="7"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment4]"
-                      name="Segment4"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment5]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment5]"
-                      length="7"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment5]"
-                      name="Segment5"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment6]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment6]"
-                      length="7"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment6]"
-                      name="Segment6"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Typical Balance]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Typical Balance]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Typical Balance]"
-                      name="Typical Balance"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[User Defined 1]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[User Defined 1]"
-                      length="21"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[User Defined 1]"
-                      name="User Defined 1"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[User Defined 2]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[User Defined 2]"
-                      length="21"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[User Defined 2]"
-                      name="User Defined 2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[User Defined String 1]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[User Defined String 1]"
-                      length="31"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[User Defined String 1]"
-                      name="User Defined String 1"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[User Defined String 2]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[User Defined String 2]"
-                      length="31"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[User Defined String 2]"
-                      name="User Defined String 2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segments]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segments]"
-                      length="1"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segments]"
-                      name="Segments"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Clear Balance]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Clear Balance]"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Clear Balance]"
-                      name="Clear Balance"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Index For Drillback]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account Index For Drillback]"
-                      length="2056"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Account Index For Drillback]"
-                      name="Account Index For Drillback"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account Number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="129"
-                      name="Account Number" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account Description]"
-                      codePage="1252"
-                      dataType="str"
-                      length="51"
-                      name="Account Description" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Posting Type]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Posting Type" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account Category Number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Account Category Number" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account Alias]"
-                      codePage="1252"
-                      dataType="str"
-                      length="21"
-                      name="Account Alias" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account Index]"
-                      dataType="i4"
-                      name="Account Index" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account Type]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Account Type" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Active]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Active" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Adjust for Inflation]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Adjust for Inflation" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Allow Account Entry]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Allow Account Entry" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Balance For Calculation]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Balance For Calculation" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Conversion Method]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Conversion Method" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Created Date]"
-                      dataType="dbTimeStamp"
-                      name="Created Date" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Decimal Places]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Decimal Places" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Fixed Or Variable]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Fixed Or Variable" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Historical Rate]"
-                      dataType="numeric"
-                      name="Historical Rate"
-                      precision="19"
-                      scale="7" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Inflation Equity Account Index]"
-                      dataType="i4"
-                      name="Inflation Equity Account Index" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Inflation Revenue Account Index]"
-                      dataType="i4"
-                      name="Inflation Revenue Account Index" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Main Account Segment]"
-                      codePage="1252"
-                      dataType="str"
-                      length="67"
-                      name="Main Account Segment" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Modified Date]"
-                      dataType="dbTimeStamp"
-                      name="Modified Date" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Note Index]"
-                      dataType="numeric"
-                      name="Note Index"
-                      precision="19"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Post Inventory In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Post Inventory In" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Post Payroll In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Post Payroll In" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Post Purchasing In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Post Purchasing In" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Post Sales In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Post Sales In" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment1" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment2" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment3]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment3" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment4]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment4" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment5]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment5" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment6]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment6" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Typical Balance]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Typical Balance" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[User Defined 1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="21"
-                      name="User Defined 1" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[User Defined 2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="21"
-                      name="User Defined 2" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[User Defined String 1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="31"
-                      name="User Defined String 1" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[User Defined String 2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="31"
-                      name="User Defined String 2" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segments]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1"
-                      name="Segments" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Clear Balance]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Clear Balance" />
-                    <externalMetadataColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Account Index For Drillback]"
-                      codePage="1252"
-                      dataType="str"
-                      length="2056"
-                      name="Account Index For Drillback" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account Number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="129"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account Number]"
-                      name="Account Number" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account Description]"
-                      codePage="1252"
-                      dataType="str"
-                      length="51"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account Description]"
-                      name="Account Description" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Posting Type]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Posting Type]"
-                      name="Posting Type" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account Category Number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account Category Number]"
-                      name="Account Category Number" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account Alias]"
-                      codePage="1252"
-                      dataType="str"
-                      length="21"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account Alias]"
-                      name="Account Alias" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account Index]"
-                      dataType="i4"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account Index]"
-                      name="Account Index" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account Type]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account Type]"
-                      name="Account Type" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Active]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Active]"
-                      name="Active" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Adjust for Inflation]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Adjust for Inflation]"
-                      name="Adjust for Inflation" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Allow Account Entry]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Allow Account Entry]"
-                      name="Allow Account Entry" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Balance For Calculation]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Balance For Calculation]"
-                      name="Balance For Calculation" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Conversion Method]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Conversion Method]"
-                      name="Conversion Method" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Created Date]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Created Date]"
-                      name="Created Date" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Decimal Places]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Decimal Places]"
-                      name="Decimal Places" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Fixed Or Variable]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Fixed Or Variable]"
-                      name="Fixed Or Variable" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Historical Rate]"
-                      dataType="numeric"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Historical Rate]"
-                      name="Historical Rate"
-                      precision="19"
-                      scale="7" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Inflation Equity Account Index]"
-                      dataType="i4"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Inflation Equity Account Index]"
-                      name="Inflation Equity Account Index" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Inflation Revenue Account Index]"
-                      dataType="i4"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Inflation Revenue Account Index]"
-                      name="Inflation Revenue Account Index" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Main Account Segment]"
-                      codePage="1252"
-                      dataType="str"
-                      length="67"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Main Account Segment]"
-                      name="Main Account Segment" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Modified Date]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Modified Date]"
-                      name="Modified Date" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Note Index]"
-                      dataType="numeric"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Note Index]"
-                      name="Note Index"
-                      precision="19"
-                      scale="5" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Post Inventory In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Post Inventory In]"
-                      name="Post Inventory In" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Post Payroll In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Post Payroll In]"
-                      name="Post Payroll In" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Post Purchasing In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Post Purchasing In]"
-                      name="Post Purchasing In" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Post Sales In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Post Sales In]"
-                      name="Post Sales In" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segment1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segment1]"
-                      name="Segment1" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segment2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segment2]"
-                      name="Segment2" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segment3]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segment3]"
-                      name="Segment3" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segment4]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segment4]"
-                      name="Segment4" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segment5]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segment5]"
-                      name="Segment5" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segment6]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segment6]"
-                      name="Segment6" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Typical Balance]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Typical Balance]"
-                      name="Typical Balance" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[User Defined 1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="21"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[User Defined 1]"
-                      name="User Defined 1" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[User Defined 2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="21"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[User Defined 2]"
-                      name="User Defined 2" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[User Defined String 1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="31"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[User Defined String 1]"
-                      name="User Defined String 1" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[User Defined String 2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="31"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[User Defined String 2]"
-                      name="User Defined String 2" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segments]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segments]"
-                      name="Segments" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Clear Balance]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Clear Balance]"
-                      name="Clear Balance" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account Index For Drillback]"
-                      codePage="1252"
-                      dataType="str"
-                      length="2056"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Account Index For Drillback]"
-                      name="Account Index For Drillback" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\Accounts to Staging.Paths[Derived Column Output]"
-              endId="Package\Accounts to Staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\Accounts to Staging\Derived Column.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Accounts to Staging.Paths[OLE DB Source Output]"
-              endId="Package\Accounts to Staging\Derived Column.Inputs[Derived Column Input]"
-              name="OLE DB Source Output"
-              startId="Package\Accounts to Staging\OLE DB Source.Outputs[OLE DB Source Output]" />
-          </paths>
-        </pipeline>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3814654C-EB9E-4392-8884-92F10D867E8D}"
+          SQLTask:SqlStatementSource="Exec [dbo].[sp_Accounts_Other]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1856,8 +116,8 @@
               <connections>
                 <connection
                   refId="Package\Additional Account Attributes\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{3814654C-EB9E-4392-8884-92F10D867E8D}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DDS]"
+                  connectionManagerID="{2B998721-D8AD-4961-B70C-26031541CA2F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG_DDS]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2319,8 +579,8 @@
               <connections>
                 <connection
                   refId="Package\Balance Sheet Categories\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{3814654C-EB9E-4392-8884-92F10D867E8D}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DDS]"
+                  connectionManagerID="{2B998721-D8AD-4961-B70C-26031541CA2F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG_DDS]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3079,7 +1339,7 @@ SELECT [Entity]
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{3814654C-EB9E-4392-8884-92F10D867E8D}"
+          SQLTask:Connection="{2B998721-D8AD-4961-B70C-26031541CA2F}"
           SQLTask:SqlStatementSource="Truncate Table stg_Accounts&#xA;Truncate Table stg_AdditionalAccountInfo&#xA;Truncate Table stg_BalanceSheetCategories&#xA;Truncate Table stg_DimAccount" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -3097,22 +1357,6 @@ SELECT [Entity]
         <SQLTask:SqlTaskData
           SQLTask:Connection="{3814654C-EB9E-4392-8884-92F10D867E8D}"
           SQLTask:SqlStatementSource="DROP TABLE IF EXISTS [dbo].[BalanceSheetAccounts];&#xA;&#xA;&#xA;With CTE as&#xA;(&#xA;SELECT [ID]&#xA;      ,[ReportYear]&#xA;      ,[ReportMonth]&#xA;      ,a.[ReportNr]&#xA;      &#xA;      ,a.[LineNr]&#xA;      &#xA;      ,a.[LineDescription]&#xA;      ,b.AccountGrouping&#xA;&#x9;  ,b.AccountNr&#xA;      ,[Version]&#xA;  FROM [RDARR].[dbo].[BAReturns]  a&#xA;  Left Join [RDARR].[dbo].[tbCombined] b on a.LinkHierarchyKey = b.LinkHierarchyKey&#xA;  Where [ReportYear] = '2018' and [ReportMonth] = '8' and a.ReportNr = '100' and [AccountNr] is not null&#xA;  &#xA;  )&#xA;&#xA;  Select Distinct&#xA;    [AccountNr]&#xA;&#x9;,[LineNr]&#xA;&#x9;Into [BalanceSheetAccounts]&#xA;  From CTE" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Other Accounts to staging"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{BFF58172-4684-48A0-8FF1-C18B00497582}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Other Accounts to staging"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{3814654C-EB9E-4392-8884-92F10D867E8D}"
-          SQLTask:SqlStatementSource="Exec [dbo].[sp_Accounts_Other]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -3199,8 +1443,8 @@ where [refTable].[SystemAccountNr] = ?</property>
               <connections>
                 <connection
                   refId="Package\stg_DimAccounts\BalanceSheet Category.Connections[OleDbConnection]"
-                  connectionManagerID="{3814654C-EB9E-4392-8884-92F10D867E8D}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DDS]"
+                  connectionManagerID="{2B998721-D8AD-4961-B70C-26031541CA2F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG_DDS]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -3669,8 +1913,8 @@ where [refTable].[GP Code] = ?</property>
               <connections>
                 <connection
                   refId="Package\stg_DimAccounts\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{F2918D3B-6E26-4C1B-860A-9DA8D27FB993}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DDS_SQLUser]"
+                  connectionManagerID="{2B998721-D8AD-4961-B70C-26031541CA2F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG_DDS]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4263,6 +2507,14 @@ where [refTable].[GP Code] = ?</property>
                       dataType="str"
                       length="9"
                       name="BS_Category" />
+                    <externalMetadataColumn
+                      refId="Package\stg_DimAccounts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HashKey]"
+                      dataType="image"
+                      name="HashKey" />
+                    <externalMetadataColumn
+                      refId="Package\stg_DimAccounts\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HashForUpdate]"
+                      dataType="image"
+                      name="HashForUpdate" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4389,8 +2641,8 @@ SELECT [Account Number]
               <connections>
                 <connection
                   refId="Package\stg_DimAccounts\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{3814654C-EB9E-4392-8884-92F10D867E8D}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DDS]"
+                  connectionManagerID="{2B998721-D8AD-4961-B70C-26031541CA2F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG_DDS]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -6997,19 +5249,35 @@ SELECT [Account Number]
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Update only changed data"
+      DTS:refId="Package\Update DimAccounts"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{50F8EE38-9258-411A-AF58-B36916362133}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Update only changed data"
+      DTS:ObjectName="Update DimAccounts"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{3814654C-EB9E-4392-8884-92F10D867E8D}"
-          SQLTask:SqlStatementSource="Exec [dbo].[sp_UpdateDimAccounts]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="Exec [dbo].[UpdateDimAccounts]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Hash Values"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2B264333-15F4-4F35-8AA9-070D9AE9A5E2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Hash Values"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3814654C-EB9E-4392-8884-92F10D867E8D}"
+          SQLTask:SqlStatementSource="Exec Update_Account_HashValues" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -7025,28 +5293,27 @@ SELECT [Account Number]
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{260EC62A-CE09-4304-8173-4E1DC0775A9A}"
-      DTS:From="Package\Accounts to Staging"
+      DTS:DTSID="{F603AF44-29DC-4E05-A3C6-003B100F8B0B}"
+      DTS:From="Package\Additional Account Attributes"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Other Accounts to staging" />
+      DTS:To="Package\Accounts to staging" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{F70A9D53-8D60-4F45-9421-2088D8CB51C5}"
-      DTS:Expression="@[User::FirstRun]==0"
+      DTS:DTSID="{BBC768DF-23AB-4F34-AE02-8CD848E7FF8F}"
       DTS:From="Package\stg_DimAccounts"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
-      DTS:To="Package\Update only changed data" />
+      DTS:To="Package\Update Hash Values" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{7E956268-10B2-4EF0-B7BB-E840F6F1018F}"
-      DTS:From="Package\Additional Account Attributes"
+      DTS:DTSID="{49513697-F251-42DE-ACB7-E5F70E89FB59}"
+      DTS:From="Package\Update Hash Values"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
-      DTS:To="Package\Accounts to Staging" />
+      DTS:To="Package\Update DimAccounts" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
@@ -7067,7 +5334,7 @@ SELECT [Account Number]
       DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
       DTS:CreationName=""
       DTS:DTSID="{7EB21B88-3FC8-4FD4-854B-1ED12D44A41B}"
-      DTS:From="Package\Other Accounts to staging"
+      DTS:From="Package\Accounts to staging"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 6"
       DTS:To="Package\stg_DimAccounts" />
@@ -7086,16 +5353,16 @@ SELECT [Account Number]
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="221.6,41.6"
-          Id="Package\Accounts to Staging"
-          TopLeft="5.50000000000001,411.9" />
+          Id="Package\Accounts to staging"
+          TopLeft="5.50000000000006,411.9" />
         <NodeLayout
           Size="221.6,41.6"
           Id="Package\Additional Account Attributes"
-          TopLeft="5.50000000000001,310.3" />
+          TopLeft="5.50000000000004,310.3" />
         <NodeLayout
           Size="221.6,41.6"
           Id="Package\Balance Sheet Categories"
-          TopLeft="5.50000000000001,208.7" />
+          TopLeft="5.50000000000003,208.7" />
         <NodeLayout
           Size="221.6,41.6"
           Id="Package\Clear Staging Tables"
@@ -7103,33 +5370,33 @@ SELECT [Account Number]
         <NodeLayout
           Size="221.6,41.6"
           Id="Package\Get_BalanceSheetAccounts"
-          TopLeft="5.50000000000001,5.49999999999995" />
-        <NodeLayout
-          Size="200.8,41.6"
-          Id="Package\Other Accounts to staging"
-          TopLeft="310.285719569849,472.752942309" />
+          TopLeft="5.5,5.49999999999995" />
         <NodeLayout
           Size="221.6,41.6"
           Id="Package\stg_DimAccounts"
-          TopLeft="5.50000000000001,513.5" />
+          TopLeft="5.50000000000007,513.5" />
         <NodeLayout
-          Size="221.6,41.6"
-          Id="Package\Update only changed data"
-          TopLeft="5.50000000000001,615.1" />
+          Size="172.8,41.6"
+          Id="Package\Update Hash Values"
+          TopLeft="29.9000000000001,615.1" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Update DimAccounts"
+          TopLeft="5.50000000000009,716.7" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="116.3,148.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,52.5">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7140,62 +5407,6 @@ SELECT [Account Number]
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="227.1,432.7">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="83.1857195698486,60.8529423090001"
-              Start="0,0"
-              End="75.6857195698486,60.8529423090001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="37.5928597849243,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="37.5928597849243,0"
-                    Point2="41.5928597849243,0"
-                    Point3="41.5928597849243,4" />
-                  <mssgle:LineSegment
-                    End="41.5928597849243,56.8529423090001" />
-                  <mssgle:CubicBezierSegment
-                    Point1="41.5928597849243,56.8529423090001"
-                    Point2="41.5928597849243,60.8529423090001"
-                    Point3="45.5928597849243,60.8529423090001" />
-                  <mssgle:LineSegment
-                    End="75.6857195698486,60.8529423090001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="116.3,555.1">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
-              Start="0,0"
-              End="0,52.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="116.3,351.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7217,19 +5428,75 @@ SELECT [Account Number]
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="116.3,555.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="116.3,656.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-22.8,60"
+              Start="0,0"
+              End="-22.8,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-18.8,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.8,30"
+                    Point2="-22.8,30"
+                    Point3="-22.8,34" />
+                  <mssgle:LineSegment
+                    End="-22.8,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="116.3,250.3">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.0000000000001"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,52.5000000000001">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5000000000001" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7262,30 +5529,18 @@ SELECT [Account Number]
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="310.285719569849,499.152942309">
+          TopLeft="116.3,453.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-83.1857195698486,35.1470576909999"
+              EndConnector="0,60.0000000000002"
               Start="0,0"
-              End="-75.6857195698486,35.1470576909999">
+              End="0,52.5000000000002">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-31.1228593739361,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-31.1228593739361,0"
-                    Point2="-35.1228593739361,0"
-                    Point3="-35.1228593739361,4" />
-                  <mssgle:LineSegment
-                    End="-35.1228593739361,31.1470576909999" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-35.1228593739361,31.1470576909999"
-                    Point2="-35.1228593739361,35.1470576909999"
-                    Point3="-39.1228593739361,35.1470576909999" />
-                  <mssgle:LineSegment
-                    End="-75.6857195698486,35.1470576909999" />
+                    End="0,52.5000000000002" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7298,128 +5553,10 @@ SELECT [Account Number]
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Accounts to Staging">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Accounts to Staging\OLE DB Destination"
-          TopLeft="172.8,230.4" />
-        <NodeLayout
-          Size="149.6,41.6"
-          Id="Package\Accounts to Staging\OLE DB Source"
-          TopLeft="57.7142866971542,36.7058828677273" />
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Accounts to Staging\Derived Column"
-          TopLeft="268,105.6" />
-        <EdgeLayout
-          Id="Package\Accounts to Staging.Paths[OLE DB Source Output]"
-          TopLeft="132.514286697154,78.3058828677273">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="211.885713302846,27.2941171322727"
-              Start="0,0"
-              End="211.885713302846,19.7941171322727">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,9.64705856613636" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,9.64705856613636"
-                    Point2="0,13.6470585661364"
-                    Point3="4,13.6470585661364" />
-                  <mssgle:LineSegment
-                    End="207.885713302846,13.6470585661364" />
-                  <mssgle:CubicBezierSegment
-                    Point1="207.885713302846,13.6470585661364"
-                    Point2="211.885713302846,13.6470585661364"
-                    Point3="211.885713302846,17.6470585661364" />
-                  <mssgle:LineSegment
-                    End="211.885713302846,19.7941171322727" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Accounts to Staging.Paths[Derived Column Output]"
-          TopLeft="344.4,147.2">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-86.4,83.2"
-              Start="0,0"
-              End="-86.4,75.7">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.6" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.6"
-                    Point2="0,41.6"
-                    Point3="-4,41.6" />
-                  <mssgle:LineSegment
-                    End="-82.4,41.6" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-82.4,41.6"
-                    Point2="-86.4,41.6"
-                    Point3="-86.4,45.6" />
-                  <mssgle:LineSegment
-                    End="-86.4,75.7" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Accounts to Staging\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Accounts to Staging\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\Additional Account Attributes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="149.6,41.6"
           Id="Package\Additional Account Attributes\OLE DB Source"
@@ -7459,9 +5596,7 @@ SELECT [Account Number]
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7574,269 +5709,225 @@ SELECT [Account Number]
         <NodeLayout
           Size="152.8,41.6"
           Id="Package\stg_DimAccounts\Derived Column"
-          TopLeft="989.6,280" />
+          TopLeft="17.5,310.3" />
         <NodeLayout
           Size="160,41.6"
           Id="Package\stg_DimAccounts\Company Lookup"
-          TopLeft="413.6,371.2" />
+          TopLeft="150.9,107.1" />
         <NodeLayout
           Size="120,41.6"
           Id="Package\stg_DimAccounts\Union All"
-          TopLeft="916.8,425.6" />
+          TopLeft="170.9,513.5" />
         <NodeLayout
           Size="149.6,41.6"
           Id="Package\stg_DimAccounts\OLE DB Source"
-          TopLeft="24,20" />
+          TopLeft="156.1,5.49999999999995" />
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\stg_DimAccounts\OLE DB Destination"
-          TopLeft="651.2,470.4" />
+          TopLeft="145.7,615.099999999999" />
         <NodeLayout
           Size="187.2,41.6"
           Id="Package\stg_DimAccounts\BalanceSheet Category"
-          TopLeft="734.4,283.2" />
+          TopLeft="137.3,208.7" />
         <NodeLayout
           Size="164.8,41.6"
           Id="Package\stg_DimAccounts\Data Conversion 1"
-          TopLeft="1057.6,360.8" />
+          TopLeft="5.50000000000006,411.9" />
         <EdgeLayout
           Id="Package\stg_DimAccounts.Paths[Union All Output 1]"
-          TopLeft="916.8,446.4">
+          TopLeft="230.9,555.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-95.1999999999999,44.8"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="-87.6999999999999,44.8">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-43.6,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-43.6,0"
-                    Point2="-47.6,0"
-                    Point3="-47.6,4" />
-                  <mssgle:LineSegment
-                    End="-47.6,40.8" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-47.6,40.8"
-                    Point2="-47.6,44.8"
-                    Point3="-51.6,44.8" />
-                  <mssgle:LineSegment
-                    End="-87.6999999999999,44.8" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\stg_DimAccounts.Paths[OLE DB Source Output]"
-          TopLeft="98.8,61.6">
+          TopLeft="230.9,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="369.466666666667,309.6"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="369.466666666667,302.1">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,179.920792079208" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,179.920792079208"
-                    Point2="0,183.920792079208"
-                    Point3="4,183.920792079208" />
-                  <mssgle:LineSegment
-                    End="365.466666666667,183.920792079208" />
-                  <mssgle:CubicBezierSegment
-                    Point1="365.466666666667,183.920792079208"
-                    Point2="369.466666666667,183.920792079208"
-                    Point3="369.466666666667,187.920792079208" />
-                  <mssgle:LineSegment
-                    End="369.466666666667,302.1" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\stg_DimAccounts.Paths[Lookup No Match Output]"
-          TopLeft="921.6,302.4">
+          TopLeft="201.033333333333,250.3">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="67.9999999999999,0"
+              EndConnector="-107.133333333333,59.9999999999999"
               Start="0,0"
-              End="60.4999999999999,0">
+              End="-107.133333333333,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="60.4999999999999,0" />
+                    End="0,20.3050847457627" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3050847457627"
+                    Point2="0,24.3050847457627"
+                    Point3="-4,24.3050847457627" />
+                  <mssgle:LineSegment
+                    End="-103.133333333333,24.3050847457627" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-103.133333333333,24.3050847457627"
+                    Point2="-107.133333333333,24.3050847457627"
+                    Point3="-107.133333333333,28.3050847457627" />
+                  <mssgle:LineSegment
+                    End="-107.133333333333,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-25.55638671875,5,111.6127734375,11.609375"
+              BoundingBox="-109.373053385417,29.3050847457627,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\stg_DimAccounts.Paths[Lookup Match Output1]"
-          TopLeft="857.866666666667,324.8">
+          TopLeft="260.766666666667,250.3">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="118.933333333333,100.8"
+              EndConnector="-11.2,263.2"
               Start="0,0"
-              End="118.933333333333,93.3">
+              End="-11.2,255.7">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.8325423728814" />
+                    End="0,126.833610648918" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,36.8325423728814"
-                    Point2="0,40.8325423728814"
-                    Point3="4,40.8325423728814" />
+                    Point1="0,126.833610648918"
+                    Point2="0,130.833610648918"
+                    Point3="-4,130.833610648918" />
                   <mssgle:LineSegment
-                    End="114.933333333333,40.8325423728814" />
+                    End="-7.19999999999999,130.833610648918" />
                   <mssgle:CubicBezierSegment
-                    Point1="114.933333333333,40.8325423728814"
-                    Point2="118.933333333333,40.8325423728814"
-                    Point3="118.933333333333,44.8325423728814" />
+                    Point1="-7.19999999999999,130.833610648918"
+                    Point2="-11.2,130.833610648918"
+                    Point3="-11.2,134.833610648918" />
                   <mssgle:LineSegment
-                    End="118.933333333333,93.3" />
+                    End="-11.2,255.7" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="11.2752799479166,45.8325423728814,96.3827734375,11.609375"
+              BoundingBox="-53.79138671875,135.833610648918,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\stg_DimAccounts.Paths[Lookup Match Output]"
-          TopLeft="518.933333333333,371.2">
+          TopLeft="230.9,148.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="279.2,-46.4"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="279.2,-38.9">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-19.2411819985381" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-19.2411819985381"
-                    Point2="0,-23.2411819985381"
-                    Point3="4,-23.2411819985381" />
-                  <mssgle:LineSegment
-                    End="275.2,-23.2411819985381" />
-                  <mssgle:CubicBezierSegment
-                    Point1="275.2,-23.2411819985381"
-                    Point2="279.2,-23.2411819985381"
-                    Point3="279.2,-27.2411819985381" />
-                  <mssgle:LineSegment
-                    End="279.2,-38.9" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="91.40861328125,-18.2411819985381,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,20.4453124999999,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\stg_DimAccounts.Paths[Derived Column Output]"
-          TopLeft="1066,321.6">
+          TopLeft="90.9,351.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="74.0000000000002,39.2"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="74.0000000000002,31.7">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.6" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.6"
-                    Point2="0,19.6"
-                    Point3="4,19.6" />
-                  <mssgle:LineSegment
-                    End="70.0000000000002,19.6" />
-                  <mssgle:CubicBezierSegment
-                    Point1="70.0000000000002,19.6"
-                    Point2="74.0000000000002,19.6"
-                    Point3="74.0000000000002,23.6" />
-                  <mssgle:LineSegment
-                    End="74.0000000000002,31.7" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\stg_DimAccounts.Paths[Data Conversion Output]"
-          TopLeft="1140,402.4">
+          TopLeft="87.9000000000001,453.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-144.533333333333,23.2"
+              EndConnector="124.333333333333,59.9999999999999"
               Start="0,0"
-              End="-144.533333333333,15.7">
+              End="124.333333333333,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.73684210526315" />
+                    End="0,31.5263157894736" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9.73684210526315"
-                    Point2="0,13.7368421052631"
-                    Point3="-4,13.7368421052631" />
+                    Point1="0,31.5263157894736"
+                    Point2="0,35.5263157894736"
+                    Point3="4,35.5263157894736" />
                   <mssgle:LineSegment
-                    End="-140.533333333333,13.7368421052631" />
+                    End="120.333333333333,35.5263157894736" />
                   <mssgle:CubicBezierSegment
-                    Point1="-140.533333333333,13.7368421052631"
-                    Point2="-144.533333333333,13.7368421052631"
-                    Point3="-144.533333333333,17.7368421052631" />
+                    Point1="120.333333333333,35.5263157894736"
+                    Point2="124.333333333333,35.5263157894736"
+                    Point3="124.333333333333,39.5263157894736" />
                   <mssgle:LineSegment
-                    End="-144.533333333333,15.7" />
+                    End="124.333333333333,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

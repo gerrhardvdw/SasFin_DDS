@@ -7,2109 +7,46 @@
   DTS:CreatorName="EOHCORP\Gerhard.VDWesthuizen"
   DTS:DTSID="{5F32C771-0434-4CAD-AD4E-9DA9C49BB404}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.1300.375"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
   DTS:LocaleID="7177"
   DTS:ObjectName="Load_FactGLTransactions"
   DTS:PackageType="5"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{B0EDB0D7-1CC3-4DD4-979D-A7B756BCC9D7}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{ACA0304D-A141-4071-9296-7EA37280DF77}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Load FactTransactions"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
-      DTS:DTSID="{7BB30174-B8B1-48C9-8ADC-E44793056E30}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Load FactTransactions"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          version="1">
-          <components>
-            <component
-              refId="Package\Load FactTransactions\OLE DB Destination"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="OLE DB Destination"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[FactGLTransactions]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Load FactTransactions\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{3814654C-EB9E-4392-8884-92F10D867E8D}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DDS]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TransactionKey]"
-                      dataType="i8"
-                      name="TransactionKey" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimAccountKey]"
-                      dataType="i8"
-                      name="DimAccountKey" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DimDateKey]"
-                      dataType="i8"
-                      name="DimDateKey" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Journal Entry]"
-                      dataType="i4"
-                      name="Journal Entry" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Series]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Series" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TRX Date]"
-                      dataType="dbTimeStamp"
-                      name="TRX Date" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="129"
-                      name="Account Number" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Description]"
-                      codePage="1252"
-                      dataType="str"
-                      length="51"
-                      name="Account Description" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Credit Amount]"
-                      dataType="numeric"
-                      name="Credit Amount"
-                      precision="19"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Debit Amount]"
-                      dataType="numeric"
-                      name="Debit Amount"
-                      precision="19"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Category Number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Account Category Number" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Description from Account Master]"
-                      codePage="1252"
-                      dataType="str"
-                      length="51"
-                      name="Account Description from Account Master" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Index]"
-                      dataType="i4"
-                      name="Account Index" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Type]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Account Type" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Type from Account Master]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Account Type from Account Master" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Active" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Adjust for Inflation]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Adjust for Inflation" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Back Out JE]"
-                      dataType="i4"
-                      name="Back Out JE" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Balance For Calculation]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Balance For Calculation" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Balance For Calculation from Account Master]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Balance For Calculation from Account Master" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Batch Number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      name="Batch Number" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Batch Source]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      name="Batch Source" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Closed Year]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Closed Year" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Conversion Method]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Conversion Method" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Correcting JE]"
-                      dataType="i4"
-                      name="Correcting JE" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CorrespondingUnit]"
-                      codePage="1252"
-                      dataType="str"
-                      length="5"
-                      name="CorrespondingUnit" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Created Date]"
-                      dataType="dbTimeStamp"
-                      name="Created Date" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Currency ID]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      name="Currency ID" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Currency Index]"
-                      dataType="i2"
-                      name="Currency Index" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DTA Control Number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="21"
-                      name="DTA Control Number" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DTA GL Status]"
-                      dataType="i2"
-                      name="DTA GL Status" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DTA Index]"
-                      dataType="numeric"
-                      name="DTA Index"
-                      precision="19"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DTA TRX Type]"
-                      dataType="i2"
-                      name="DTA TRX Type" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Decimal Places]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Decimal Places" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Decimal Places from Account Master]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Decimal Places from Account Master" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Denomination Exchange Rate]"
-                      dataType="numeric"
-                      name="Denomination Exchange Rate"
-                      precision="19"
-                      scale="7" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
-                      codePage="1252"
-                      dataType="str"
-                      length="31"
-                      name="Description" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Document Date]"
-                      dataType="dbTimeStamp"
-                      name="Document Date" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Document Status]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Document Status" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Error State]"
-                      dataType="i4"
-                      name="Error State" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Exchange Date]"
-                      dataType="dbTimeStamp"
-                      name="Exchange Date" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Exchange Rate]"
-                      dataType="numeric"
-                      name="Exchange Rate"
-                      precision="19"
-                      scale="7" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Exchange Table ID]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      name="Exchange Table ID" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fixed Or Variable]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Fixed Or Variable" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fixed Or Variable from Account Master]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Fixed Or Variable from Account Master" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Historical Rate]"
-                      dataType="numeric"
-                      name="Historical Rate"
-                      precision="19"
-                      scale="7" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[History TRX]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="History TRX" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[History Year]"
-                      dataType="i2"
-                      name="History Year" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ICDists]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="ICDists" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IC TRX]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="IC TRX" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Inflation Equity Account Index]"
-                      dataType="i4"
-                      name="Inflation Equity Account Index" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Inflation Revenue Account Index]"
-                      dataType="i4"
-                      name="Inflation Revenue Account Index" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Intercompany ID]"
-                      codePage="1252"
-                      dataType="str"
-                      length="5"
-                      name="Intercompany ID" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Last Date Edited]"
-                      dataType="dbTimeStamp"
-                      name="Last Date Edited" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Last User]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      name="Last User" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Line Status]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Line Status" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MC Transaction State]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="MC Transaction State" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Main Account Segment]"
-                      codePage="1252"
-                      dataType="str"
-                      length="67"
-                      name="Main Account Segment" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Modified Date]"
-                      dataType="dbTimeStamp"
-                      name="Modified Date" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Note Index]"
-                      dataType="numeric"
-                      name="Note Index"
-                      precision="19"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Note Index from Account Master]"
-                      dataType="numeric"
-                      name="Note Index from Account Master"
-                      precision="19"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Open Year]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Open Year" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Original JE]"
-                      dataType="i4"
-                      name="Original JE" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Originating Company ID]"
-                      codePage="1252"
-                      dataType="str"
-                      length="5"
-                      name="Originating Company ID" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Originating Control Number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="21"
-                      name="Originating Control Number" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Originating Credit Amount]"
-                      dataType="numeric"
-                      name="Originating Credit Amount"
-                      precision="19"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Originating DTA Series]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Originating DTA Series" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Originating Debit Amount]"
-                      dataType="numeric"
-                      name="Originating Debit Amount"
-                      precision="19"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Originating Document Number]"
-                      codePage="1252"
-                      dataType="str"
-                      length="21"
-                      name="Originating Document Number" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Originating Journal Entry]"
-                      dataType="i4"
-                      name="Originating Journal Entry" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Originating Master ID]"
-                      codePage="1252"
-                      dataType="str"
-                      length="31"
-                      name="Originating Master ID" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Originating Master Name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="65"
-                      name="Originating Master Name" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Originating Posted Date]"
-                      dataType="dbTimeStamp"
-                      name="Originating Posted Date" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Originating Sequence Number]"
-                      dataType="i4"
-                      name="Originating Sequence Number" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Originating Source]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      name="Originating Source" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Originating TRX Source]"
-                      codePage="1252"
-                      dataType="str"
-                      length="13"
-                      name="Originating TRX Source" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Originating TRX Type]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Originating TRX Type" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Originating Type]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Originating Type" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Period ID]"
-                      dataType="i2"
-                      name="Period ID" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Period Posting Number]"
-                      dataType="i4"
-                      name="Period Posting Number" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Approval User ID]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      name="Approval User ID" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Approval Date]"
-                      dataType="dbTimeStamp"
-                      name="Approval Date" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Polled Transaction]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Polled Transaction" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Post Inventory In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Post Inventory In" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Post Payroll In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Post Payroll In" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Post Purchasing In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Post Purchasing In" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Post Sales In]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Post Sales In" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Posting Number]"
-                      dataType="i4"
-                      name="Posting Number" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Posting Type]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Posting Type" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Posting Type from Account Master]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Posting Type from Account Master" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Printing Status]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Printing Status" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quick Offset]"
-                      dataType="i2"
-                      name="Quick Offset" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rate Calculation Method]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Rate Calculation Method" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rate Type ID]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      name="Rate Type ID" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Recurring TRX]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Recurring TRX" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Recurring TRX Sequence]"
-                      dataType="numeric"
-                      name="Recurring TRX Sequence"
-                      precision="19"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reference]"
-                      codePage="1252"
-                      dataType="str"
-                      length="31"
-                      name="Reference" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reversing Closed Year]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Reversing Closed Year" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reversing Date]"
-                      dataType="dbTimeStamp"
-                      name="Reversing Date" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reversing History TRX]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Reversing History TRX" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reversing Period ID]"
-                      dataType="i2"
-                      name="Reversing Period ID" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reversing TRX Source]"
-                      codePage="1252"
-                      dataType="str"
-                      length="13"
-                      name="Reversing TRX Source" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reversing Year]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Reversing Year" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment1" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment2" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment3]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment3" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment4]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment4" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment5]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment5" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment6]"
-                      codePage="1252"
-                      dataType="str"
-                      length="7"
-                      name="Segment6" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sequence Number]"
-                      dataType="numeric"
-                      name="Sequence Number"
-                      precision="19"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source Document]"
-                      codePage="1252"
-                      dataType="str"
-                      length="11"
-                      name="Source Document" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TRX Source]"
-                      codePage="1252"
-                      dataType="str"
-                      length="13"
-                      name="TRX Source" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tax Date]"
-                      dataType="dbTimeStamp"
-                      name="Tax Date" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Time]"
-                      dataType="dbTimeStamp"
-                      name="Time" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Transaction Type]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Transaction Type" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Typical Balance]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Typical Balance" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User Defined 1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="21"
-                      name="User Defined 1" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User Defined 2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="21"
-                      name="User Defined 2" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User Who Posted]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      name="User Who Posted" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Voided]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Voided" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segments]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1"
-                      name="Segments" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Workflow Approval Status]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Workflow Approval Status" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Workflow Priority]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Workflow Priority" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ledger Name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Ledger Name" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ledger Description]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="Ledger Description" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account Index For Drillback]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4000"
-                      name="Account Index For Drillback" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Journal Entry For Drillback]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4000"
-                      name="Journal Entry For Drillback" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Database]"
-                      dataType="wstr"
-                      length="50"
-                      name="Database" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HashKey]"
-                      dataType="i4"
-                      name="HashKey" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load FactTransactions\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load FactTransactions\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load FactTransactions\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Load FactTransactions\OLE DB Source"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="OLE DB Source"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">With CTE as
-(
-SELECT [TransactionID]
-       
-      ,[Entity]
-      ,[ACTINDX]
-      ,[AccountNr]
-      ,[FullAccountNr]
-      
-	  ,CASE [PeriodID]
-	     When '0' Then [Year1] - 1
-		 Else [Year1]
-		 END as [Year1]
-      ,CASE [PeriodID]
-	     When '0' Then 12
-		 Else [PeriodID]
-		 END as [PeriodID]
-     
-      ,[NET_AMT]
-      ,[CRDTAMNT]
-      ,[DEBITAMT]
-      ,[StartDate]
-      ,[EndDate]
-	  ,CASE [PeriodID]
-	     When '0' Then 'Adjustment'
-		 Else 'Normal'
-		 END as [TransactionClassification]
-  FROM [dbo].[stg_Transactions] 
-
-  )
-
-  Select a.TransactionID
-  ,a.AccountNr
-  ,a.ACTINDX
-  ,a.Entity
-  ,a.FullAccountNr
-  ,a.PeriodID
-  ,a.Year1
-  ,a.StartDate
-  ,a.EndDate
-  ,a.CRDTAMNT
-  ,a.DEBITAMT
-  ,a.NET_AMT
-  ,a.[TransactionClassification]
-     ,b.AccountID as [AccountKey]
-	 ,c.ID as [DateKey]
-  from CTE a
-
-
-   left join DimAccount b on b.FullAccountNr = a.[FullAccountNr]
-   Left Join DimDate c on c.[FiscalYear] = a.[Year1] and c.[FiscalMonth] = a.[PeriodID] and c.[Day] = 1</property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">2</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Load FactTransactions\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{3814654C-EB9E-4392-8884-92F10D867E8D}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DDS]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[TransactionID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TransactionID]"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[TransactionID]"
-                      name="TransactionID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountNr]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountNr]"
-                      length="100"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountNr]"
-                      name="AccountNr"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTINDX]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTINDX]"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTINDX]"
-                      name="ACTINDX"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[Entity]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Entity]"
-                      length="8000"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[Entity]"
-                      name="Entity"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullAccountNr]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullAccountNr]"
-                      length="200"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullAccountNr]"
-                      name="FullAccountNr"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[PeriodID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PeriodID]"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[PeriodID]"
-                      name="PeriodID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[Year1]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Year1]"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[Year1]"
-                      name="Year1"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[StartDate]"
-                      dataType="dbTimeStamp2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StartDate]"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[StartDate]"
-                      name="StartDate"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[EndDate]"
-                      dataType="dbTimeStamp2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EndDate]"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[EndDate]"
-                      name="EndDate"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[CRDTAMNT]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CRDTAMNT]"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[CRDTAMNT]"
-                      name="CRDTAMNT"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEBITAMT]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEBITAMT]"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEBITAMT]"
-                      name="DEBITAMT"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[NET_AMT]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NET_AMT]"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[NET_AMT]"
-                      name="NET_AMT"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[TransactionClassification]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TransactionClassification]"
-                      length="10"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[TransactionClassification]"
-                      name="TransactionClassification"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountKey]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountKey]"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountKey]"
-                      name="AccountKey"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
-                      name="DateKey"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TransactionID]"
-                      dataType="i4"
-                      name="TransactionID" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountNr]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="AccountNr" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTINDX]"
-                      dataType="i4"
-                      name="ACTINDX" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Entity]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8000"
-                      name="Entity" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullAccountNr]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
-                      name="FullAccountNr" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PeriodID]"
-                      dataType="i4"
-                      name="PeriodID" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Year1]"
-                      dataType="i4"
-                      name="Year1" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StartDate]"
-                      dataType="dbTimeStamp2"
-                      name="StartDate"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EndDate]"
-                      dataType="dbTimeStamp2"
-                      name="EndDate"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CRDTAMNT]"
-                      dataType="r8"
-                      name="CRDTAMNT" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEBITAMT]"
-                      dataType="r8"
-                      name="DEBITAMT" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NET_AMT]"
-                      dataType="r8"
-                      name="NET_AMT" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TransactionClassification]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="TransactionClassification" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountKey]"
-                      dataType="i4"
-                      name="AccountKey" />
-                    <externalMetadataColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
-                      dataType="i8"
-                      name="DateKey" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TransactionID]"
-                      dataType="i4"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TransactionID]"
-                      name="TransactionID" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountNr]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountNr]"
-                      name="AccountNr" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTINDX]"
-                      dataType="i4"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTINDX]"
-                      name="ACTINDX" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Entity]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8000"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Entity]"
-                      name="Entity" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullAccountNr]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullAccountNr]"
-                      name="FullAccountNr" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PeriodID]"
-                      dataType="i4"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PeriodID]"
-                      name="PeriodID" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Year1]"
-                      dataType="i4"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Year1]"
-                      name="Year1" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StartDate]"
-                      dataType="dbTimeStamp2"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StartDate]"
-                      name="StartDate"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EndDate]"
-                      dataType="dbTimeStamp2"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EndDate]"
-                      name="EndDate"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CRDTAMNT]"
-                      dataType="r8"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CRDTAMNT]"
-                      name="CRDTAMNT" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEBITAMT]"
-                      dataType="r8"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEBITAMT]"
-                      name="DEBITAMT" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NET_AMT]"
-                      dataType="r8"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NET_AMT]"
-                      name="NET_AMT" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TransactionClassification]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TransactionClassification]"
-                      name="TransactionClassification" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountKey]"
-                      dataType="i4"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountKey]"
-                      name="AccountKey" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
-                      dataType="i8"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
-                      name="DateKey" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\Load FactTransactions.Paths[OLE DB Source Output]"
-              endId="Package\Load FactTransactions\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="OLE DB Source Output"
-              startId="Package\Load FactTransactions\OLE DB Source.Outputs[OLE DB Source Output]" />
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Transactions to Staging"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{7B7D26E7-DAF9-4AE9-B846-C06C7A9547E4}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Transactions to Staging"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          version="1">
-          <components>
-            <component
-              refId="Package\Transactions to Staging\OLE DB Destination"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="OLE DB Destination"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[stg_Transactions]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Transactions to Staging\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{3814654C-EB9E-4392-8884-92F10D867E8D}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DDS]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TransactionID]"
-                      cachedDataType="i4"
-                      cachedName="TransactionID"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TransactionID]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[TransactionID]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Entity]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="8000"
-                      cachedName="Entity"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Entity]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Entity]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ACTINDX]"
-                      cachedDataType="i4"
-                      cachedName="ACTINDX"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACTINDX]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTINDX]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AccountNr]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="AccountNr"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountNr]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountNr]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FullAccountNr]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="200"
-                      cachedName="FullAccountNr"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullAccountNr]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullAccountNr]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Division]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="Division"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Division]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Activity]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="Activity"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Activity]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Activity]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Area]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="Area"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Area]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Area]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Staff]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="Staff"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Staff]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Staff]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Company]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="20"
-                      cachedName="Company"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Company]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Company]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[YEAR1]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4"
-                      cachedName="YEAR1"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[YEAR1]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[YEAR1]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PeriodID]"
-                      cachedDataType="i4"
-                      cachedName="PeriodID"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PeriodID]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[PeriodID]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NET_AMT]"
-                      cachedDataType="r8"
-                      cachedName="NET_AMT"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NET_AMT]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NET_AMT]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CRDTAMNT]"
-                      cachedDataType="r8"
-                      cachedName="CRDTAMNT"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CRDTAMNT]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[CRDTAMNT]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DEBITAMT]"
-                      cachedDataType="r8"
-                      cachedName="DEBITAMT"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DEBITAMT]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEBITAMT]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StartDate]"
-                      cachedDataType="dbTimeStamp2"
-                      cachedName="StartDate"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[StartDate]" />
-                    <inputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EndDate]"
-                      cachedDataType="dbTimeStamp2"
-                      cachedName="EndDate"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[EndDate]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TransactionID]"
-                      dataType="i4"
-                      name="TransactionID" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Entity]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8000"
-                      name="Entity" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACTINDX]"
-                      dataType="i4"
-                      name="ACTINDX" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountNr]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="AccountNr" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullAccountNr]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
-                      name="FullAccountNr" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      name="Division" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Activity]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      name="Activity" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Area]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      name="Area" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Staff]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      name="Staff" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Company]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      name="Company" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[YEAR1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4"
-                      name="YEAR1" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PeriodID]"
-                      dataType="i4"
-                      name="PeriodID" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NET_AMT]"
-                      dataType="r8"
-                      name="NET_AMT" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CRDTAMNT]"
-                      dataType="r8"
-                      name="CRDTAMNT" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DEBITAMT]"
-                      dataType="r8"
-                      name="DEBITAMT" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
-                      dataType="dbTimeStamp2"
-                      name="StartDate"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
-                      dataType="dbTimeStamp2"
-                      name="EndDate"
-                      scale="2" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Transactions to Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Transactions to Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Transactions to Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Transactions to Staging\OLE DB Source"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="OLE DB Source"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[view_BI_GL_TRX]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  [TransactionID]
-      ,Replace(REPLACE([Entity],'[JNBUT-SQL01]','[JNBUT-SQL05\I02]'),'SBANK Dev','[JNBDV-SQLBI01\I01].SBANK') as Entity
-      ,[ACTINDX]
-      ,[AccountNr]
-      ,[FullAccountNr]
-      ,[Division]
-      ,[Activity]
-      ,[Area]
-      ,[Staff]
-      ,[Company]
-      ,[YEAR1]
-      ,[PeriodID]
-      ,[NET_AMT]
-      ,[CRDTAMNT]
-      ,[DEBITAMT]
-      ,[StartDate]
-      ,[EndDate]
-  FROM [RDARR].[dbo].[tbGLTransactions]</property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">2</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Transactions to Staging\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{3814654C-EB9E-4392-8884-92F10D867E8D}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DDS]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[TransactionID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TransactionID]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[TransactionID]"
-                      name="TransactionID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Entity]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Entity]"
-                      length="8000"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Entity]"
-                      name="Entity"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTINDX]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTINDX]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACTINDX]"
-                      name="ACTINDX"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountNr]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountNr]"
-                      length="100"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountNr]"
-                      name="AccountNr"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullAccountNr]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullAccountNr]"
-                      length="200"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullAccountNr]"
-                      name="FullAccountNr"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Division]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Division]"
-                      length="20"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Division]"
-                      name="Division"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Activity]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Activity]"
-                      length="20"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Activity]"
-                      name="Activity"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Area]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Area]"
-                      length="20"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Area]"
-                      name="Area"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Staff]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Staff]"
-                      length="20"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Staff]"
-                      name="Staff"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Company]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Company]"
-                      length="20"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Company]"
-                      name="Company"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[YEAR1]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[YEAR1]"
-                      length="4"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[YEAR1]"
-                      name="YEAR1"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[PeriodID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PeriodID]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[PeriodID]"
-                      name="PeriodID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NET_AMT]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NET_AMT]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NET_AMT]"
-                      name="NET_AMT"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[CRDTAMNT]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CRDTAMNT]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[CRDTAMNT]"
-                      name="CRDTAMNT"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEBITAMT]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEBITAMT]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEBITAMT]"
-                      name="DEBITAMT"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[StartDate]"
-                      dataType="dbTimeStamp2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StartDate]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[StartDate]"
-                      name="StartDate"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[EndDate]"
-                      dataType="dbTimeStamp2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EndDate]"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[EndDate]"
-                      name="EndDate"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TransactionID]"
-                      dataType="i4"
-                      name="TransactionID" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Entity]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8000"
-                      name="Entity" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACTINDX]"
-                      dataType="i4"
-                      name="ACTINDX" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountNr]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="AccountNr" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullAccountNr]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
-                      name="FullAccountNr" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Division]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      name="Division" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Activity]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      name="Activity" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Area]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      name="Area" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Staff]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      name="Staff" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Company]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      name="Company" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[YEAR1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4"
-                      name="YEAR1" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PeriodID]"
-                      dataType="i4"
-                      name="PeriodID" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NET_AMT]"
-                      dataType="r8"
-                      name="NET_AMT" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CRDTAMNT]"
-                      dataType="r8"
-                      name="CRDTAMNT" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEBITAMT]"
-                      dataType="r8"
-                      name="DEBITAMT" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StartDate]"
-                      dataType="dbTimeStamp2"
-                      name="StartDate"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EndDate]"
-                      dataType="dbTimeStamp2"
-                      name="EndDate"
-                      scale="2" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TransactionID]"
-                      dataType="i4"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TransactionID]"
-                      name="TransactionID" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Entity]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8000"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Entity]"
-                      name="Entity" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTINDX]"
-                      dataType="i4"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACTINDX]"
-                      name="ACTINDX" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountNr]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountNr]"
-                      name="AccountNr" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullAccountNr]"
-                      codePage="1252"
-                      dataType="str"
-                      length="200"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullAccountNr]"
-                      name="FullAccountNr" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Division]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Division]"
-                      name="Division" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Activity]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Activity]"
-                      name="Activity" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Area]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Area]"
-                      name="Area" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Staff]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Staff]"
-                      name="Staff" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Company]"
-                      codePage="1252"
-                      dataType="str"
-                      length="20"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Company]"
-                      name="Company" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[YEAR1]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[YEAR1]"
-                      name="YEAR1" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PeriodID]"
-                      dataType="i4"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PeriodID]"
-                      name="PeriodID" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NET_AMT]"
-                      dataType="r8"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NET_AMT]"
-                      name="NET_AMT" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CRDTAMNT]"
-                      dataType="r8"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CRDTAMNT]"
-                      name="CRDTAMNT" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEBITAMT]"
-                      dataType="r8"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEBITAMT]"
-                      name="DEBITAMT" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StartDate]"
-                      dataType="dbTimeStamp2"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StartDate]"
-                      name="StartDate"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EndDate]"
-                      dataType="dbTimeStamp2"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EndDate]"
-                      name="EndDate"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\Transactions to Staging.Paths[OLE DB Source Output]"
-              endId="Package\Transactions to Staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="OLE DB Source Output"
-              startId="Package\Transactions to Staging\OLE DB Source.Outputs[OLE DB Source Output]" />
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Truncate Fact Table"
+      DTS:refId="Package\Account Transactions to Staging"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{CADCA6D1-02BC-42FD-B5D6-D93550B675F3}"
+      DTS:DTSID="{E2CE604D-9F6F-4AD4-8532-473BD1704DE2}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Truncate Fact Table"
+      DTS:ObjectName="Account Transactions to Staging"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{3814654C-EB9E-4392-8884-92F10D867E8D}"
-          SQLTask:SqlStatementSource="Truncate Table FactGLTransactions" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="Exec  [dbo].[AccountTransactions_Other]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SSRTRX Account Transactions to Staging"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F941AE1D-48F5-402C-A08D-6DBA1E6CF4DE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SSRTRX Account Transactions to Staging"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3814654C-EB9E-4392-8884-92F10D867E8D}"
+          SQLTask:SqlStatementSource="Exec [dbo].[AccountTransactions_SSTRX]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -2124,8 +61,40 @@ SELECT [TransactionID]
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
+          SQLTask:Connection="{2B998721-D8AD-4961-B70C-26031541CA2F}"
+          SQLTask:SqlStatementSource="Truncate table stg_AccountTransactions" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Account Transactions Hash Values"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9514E7B5-918A-4A54-A44B-656438947191}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Account Transactions Hash Values"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
           SQLTask:Connection="{3814654C-EB9E-4392-8884-92F10D867E8D}"
-          SQLTask:SqlStatementSource="Truncate table stg_Transactions" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="Exec [dbo].[Update_GLTrans_HashValues]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update GL Transactions"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F8CA7E14-38C7-46D4-A4CA-54676CFCF56C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update GL Transactions"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3814654C-EB9E-4392-8884-92F10D867E8D}"
+          SQLTask:SqlStatementSource="Exec [dbo].[UpdateFactGLTransactions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2133,27 +102,35 @@ SELECT [TransactionID]
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{DAF39887-0CCF-4924-8A3D-F6F529B92C16}"
+      DTS:DTSID="{64F4A48B-5EFF-4A15-86FF-49F814E7F1B3}"
       DTS:From="Package\Truncate Staging"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Transactions to Staging" />
+      DTS:To="Package\Account Transactions to Staging" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{E9E08450-91D3-405A-A189-88542E116BDF}"
-      DTS:From="Package\Transactions to Staging"
+      DTS:DTSID="{C1D57A40-4AE1-4931-998E-B48928D012B3}"
+      DTS:From="Package\Account Transactions to Staging"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Truncate Fact Table" />
+      DTS:To="Package\SSRTRX Account Transactions to Staging" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{C560FFB9-1210-4CDD-A7E3-6D60EAFD5E9D}"
-      DTS:From="Package\Truncate Fact Table"
+      DTS:DTSID="{7D76B97D-5289-4E28-9AB7-9987CC71074D}"
+      DTS:From="Package\SSRTRX Account Transactions to Staging"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
-      DTS:To="Package\Load FactTransactions" />
+      DTS:To="Package\Update Account Transactions Hash Values" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{86E34B9B-4571-4B1C-A2B2-F9B099ABED06}"
+      DTS:From="Package\Update Account Transactions Hash Values"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Update GL Transactions" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2166,37 +143,41 @@ SELECT [TransactionID]
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="188.8,41.6"
-          Id="Package\Load FactTransactions"
-          TopLeft="15.4285716913184,305.882357231062" />
+          Size="229.6,41.6"
+          Id="Package\Account Transactions to Staging"
+          TopLeft="5.50000000000003,107.1" />
         <NodeLayout
-          Size="188.8,41.6"
-          Id="Package\Transactions to Staging"
-          TopLeft="15.4285716913184,127.858825322584" />
+          Size="271.2,41.6"
+          Id="Package\SSRTRX Account Transactions to Staging"
+          TopLeft="319.428576868408,129.317648457326" />
         <NodeLayout
-          Size="188.8,41.6"
-          Id="Package\Truncate Fact Table"
-          TopLeft="15.4285716913184,203.105885201424" />
-        <NodeLayout
-          Size="188.8,41.6"
+          Size="229.6,41.6"
           Id="Package\Truncate Staging"
-          TopLeft="15.4285716913184,35.482353438803" />
+          TopLeft="5.50000000000003,5.49999999999995" />
+        <NodeLayout
+          Size="276.8,41.6"
+          Id="Package\Update Account Transactions Hash Values"
+          TopLeft="338.285720046686,230.870591058038" />
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\Update GL Transactions"
+          TopLeft="10.0714286492796,236.229412150795" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="109.828571691318,77.082353438803">
+          TopLeft="120.3,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50.7764718837805"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,43.2764718837805">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.2764718837805" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2207,18 +188,30 @@ SELECT [TransactionID]
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="109.828571691318,169.458825322584">
+          TopLeft="235.1,127.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,33.6470598788406"
+              EndConnector="84.3285768684076,22.2176484573259"
               Start="0,0"
-              End="0,26.1470598788406">
+              End="76.8285768684076,22.2176484573259">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.1470598788406" />
+                    End="38.1642884342038,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.1642884342038,0"
+                    Point2="42.1642884342038,0"
+                    Point3="42.1642884342038,4" />
+                  <mssgle:LineSegment
+                    End="42.1642884342038,18.2176484573259" />
+                  <mssgle:CubicBezierSegment
+                    Point1="42.1642884342038,18.2176484573259"
+                    Point2="42.1642884342038,22.2176484573259"
+                    Point3="46.1642884342038,22.2176484573259" />
+                  <mssgle:LineSegment
+                    End="76.8285768684076,22.2176484573259" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2229,18 +222,52 @@ SELECT [TransactionID]
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="109.828571691318,244.705885201424">
+          TopLeft="455.028576868408,170.917648457326">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,61.1764720296376"
+              EndConnector="21.6571431782781,59.9529426007123"
               Start="0,0"
-              End="0,53.6764720296376">
+              End="21.6571431782781,52.4529426007123">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53.6764720296376" />
+                    End="0,25.9764713003562" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.9764713003562"
+                    Point2="0,29.9764713003562"
+                    Point3="4,29.9764713003562" />
+                  <mssgle:LineSegment
+                    End="17.6571431782781,29.9764713003562" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.6571431782781,29.9764713003562"
+                    Point2="21.6571431782781,29.9764713003562"
+                    Point3="21.6571431782781,33.9764713003562" />
+                  <mssgle:LineSegment
+                    End="21.6571431782781,52.4529426007123" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="338.285720046686,254.350001604417">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-137.814291397406,0"
+              Start="0,0"
+              End="-130.314291397406,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-130.314291397406,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2252,152 +279,5 @@ SELECT [TransactionID]
       </GraphLayout>
     </LayoutInfo>
   </Package>
-  <TaskHost
-    design-time-name="Package\Load FactTransactions">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="149.6,41.6"
-          Id="Package\Load FactTransactions\OLE DB Source"
-          TopLeft="78.4,66.4" />
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Load FactTransactions\OLE DB Destination"
-          TopLeft="117.6,215.2" />
-        <EdgeLayout
-          Id="Package\Load FactTransactions.Paths[OLE DB Source Output]"
-          TopLeft="153.2,108">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="49.6,107.2"
-              Start="0,0"
-              End="49.6,99.7">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.6" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,49.6"
-                    Point2="0,53.6"
-                    Point3="4,53.6" />
-                  <mssgle:LineSegment
-                    End="45.6,53.6" />
-                  <mssgle:CubicBezierSegment
-                    Point1="45.6,53.6"
-                    Point2="49.6,53.6"
-                    Point3="49.6,57.6" />
-                  <mssgle:LineSegment
-                    End="49.6,99.7" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load FactTransactions\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load FactTransactions\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Transactions to Staging">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="149.6,41.6"
-          Id="Package\Transactions to Staging\OLE DB Source"
-          TopLeft="38.2857149377161,26.3058827218712" />
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Transactions to Staging\OLE DB Destination"
-          TopLeft="240.571432668336,159.670590474614" />
-        <EdgeLayout
-          Id="Package\Transactions to Staging.Paths[OLE DB Source Output]"
-          TopLeft="113.085714937716,67.9058827218712">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="212.68571773062,91.7647077527427"
-              Start="0,0"
-              End="212.68571773062,84.2647077527427">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.8823538763713" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,41.8823538763713"
-                    Point2="0,45.8823538763713"
-                    Point3="4,45.8823538763713" />
-                  <mssgle:LineSegment
-                    End="208.68571773062,45.8823538763713" />
-                  <mssgle:CubicBezierSegment
-                    Point1="208.68571773062,45.8823538763713"
-                    Point2="212.68571773062,45.8823538763713"
-                    Point3="212.68571773062,49.8823538763713" />
-                  <mssgle:LineSegment
-                    End="212.68571773062,84.2647077527427" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transactions to Staging\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transactions to Staging\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

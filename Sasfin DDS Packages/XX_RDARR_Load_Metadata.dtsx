@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-BV4ITRF"
   DTS:CreatorName="EOHCORP\Gerhard.VDWesthuizen"
-  DTS:DTSID="{09685901-5AF9-431A-A950-C5471EE89A76}"
+  DTS:DTSID="{5596943B-3D12-41EF-87FD-62899ECA665F}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LastModifiedProductVersion="15.0.1300.375"
   DTS:LocaleID="7177"
-  DTS:ObjectName="RDARR_Load_Metadata"
+  DTS:ObjectName="XX_RDARR_Load_Metadata"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{93D3EED1-7CFC-4526-AC86-837E05314FC4}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{37B20188-66FC-44EB-AF67-0E4C797CB03D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>

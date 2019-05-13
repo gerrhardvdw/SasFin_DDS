@@ -11,8 +11,8 @@
   DTS:LocaleID="7177"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{9C430C9B-C865-4298-AB39-70F5DA4C2188}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{3AF047E4-5EA4-40B6-A117-EAD46F8705C3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -46,7 +46,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{0FB347C3-1C58-47BB-BD4C-06844D440FD8}"
-          SQLTask:SqlStatementSource="Exec [dbo].[sp_Customers_Other]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="Exec [dbo].[stg_Customers]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -62,7 +62,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{0FB347C3-1C58-47BB-BD4C-06844D440FD8}"
-          SQLTask:SqlStatementSource="Exec [dbo].[sp_Update_DimCustomers]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="Exec [dbo].[Update_DimCustomers]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
